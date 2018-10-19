@@ -1,4 +1,6 @@
-/Invader.class
-/TestInvader.class
-/TestLecteurDonnees.class
-/io/
+/Case.class
+/Direction.class
+/NatureTerrain.class
+/Incendie
+/Incendie.class
+/DonneesSimulation.class

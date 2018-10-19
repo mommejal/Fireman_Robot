@@ -2,5 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="doc/gui"/>
+	<classpathentry kind="lib" path="/user/6/pretrehr/POO/Pompiers/2A_POO_robots2018/bin/gui.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
