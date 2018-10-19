@@ -9,7 +9,13 @@ public class Carte {
 	public Carte(int nbL, int nbC) {
 		this.nbLignes = nbL;
 		this.nbColonnes = nbC;
-		this.map = Case[nbL*nbC];
+		this.map = new Case[nbL*nbC];
+		for (int i = 0; i<nbL ; i++) {
+			for (int j = 0; j<nbC; j++) {
+				this.map[i*nbL + j].ligne = i;
+				this.map[i*nbL + j].colonne = j;
+			}
+		}
 	}
 
 
@@ -22,7 +28,7 @@ public class Carte {
 	}
 	
 	public Case getCase(int ligne, int colonne) {
-		return this.map.get(ligne*this.nbColonnes+colonne);
+		return this.map[ligne*this.nbColonnes+colonne];
 	}
 	
 	public boolean voisinExiste(Case src, Direction dir) {
