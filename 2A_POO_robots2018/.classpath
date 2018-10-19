@@ -2,7 +2,11 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="doc/gui"/>
 	<classpathentry kind="lib" path="/user/6/pretrehr/POO/Pompiers/2A_POO_robots2018/bin/gui.jar"/>
+=======
+	<classpathentry kind="lib" path="/user/8/mommejal/2A_POO_robots2018/bin/gui.jar"/>
+>>>>>>> branch 'master' of https://github.com/mommejal/Fireman_Robot
 	<classpathentry kind="output" path="bin"/>
 </classpath>
