@@ -1,5 +1,5 @@
 public class Case{
-	private int ligne, colonne;
+	public int ligne, colonne;
 	private NatureTerrain nature = NatureTerrain.TERRAIN_LIBRE;
 	
 	
