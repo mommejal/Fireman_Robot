@@ -1,4 +1,3 @@
-package carte;
 public enum NatureTerrain{
 	EAU, 
 	FORET, 

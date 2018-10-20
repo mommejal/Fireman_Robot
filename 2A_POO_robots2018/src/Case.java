@@ -1,5 +1,3 @@
-package carte;
-
 public class Case{
 	public int ligne, colonne;
 	private NatureTerrain nature = NatureTerrain.TERRAIN_LIBRE;
