@@ -32,7 +32,21 @@ public class Carte {
 	}
 	
 	public boolean voisinExiste(Case src, Direction dir) {
+		if (dir == Direction.NORD) {
+			
+		}
 		
+		else if (dir == Direction.SUD) {
+			
+		}
+		
+		else if (dir == Direction.EST) {
+			
+		}
+		
+		else if (dir == Direction.OUEST){
+			
+		}
 	}
 	
 	public Case getVoisin(Case src, Direction dir) {
