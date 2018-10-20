@@ -1,6 +1,6 @@
 public class Case{
 	private int ligne, colonne;
-	private NatureTerrain nature = TERRAIN_LIBRE;
+	private NatureTerrain nature = NatureTerrain.TERRAIN_LIBRE;
 	
 	
 	public int getLigne() {
