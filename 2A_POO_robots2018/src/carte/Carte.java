@@ -51,6 +51,27 @@ public class Carte {
 	}
 	
 	public Case getVoisin(Case src, Direction dir) {
+		if (this.voisinExiste(src, dir)) {
+			
+			if (dir == Direction.NORD) {
+				return this.getCase(src.ligne - 1, src.colonne);
+			}
 		
+			else if (dir == Direction.SUD) {
+				return this.getCase(src.ligne + 1, src.colonne);
+			}
+		
+			else if (dir == Direction.EST) {
+				return this.getCase(src.ligne, src.colonne + 1);
+			}
+			
+			else {
+				return this.getCase(src.ligne, src.colonne - 1);
+			}
+			
+		}
+		else {
+			return this.getCase(src.ligne, src.colonne);
+		}
 	}
 }
