@@ -1,5 +1,9 @@
 package robot;
 
+import carte.Case;
+import carte.Direction;
+import carte.NatureTerrain;
+
 public class RobotARoue extends Robot {
 	int reservoirmax = 5000;
 	int debit = 100/5;
@@ -20,6 +24,29 @@ public class RobotARoue extends Robot {
 //			sortie = a.getDate()<datefin);
 //		}
 //		this.setVolume(reservoirmax);
+	}
+	
+	
+	
+
+	@Override
+	public boolean canMove(Direction dir) {
+		// Cette fonction vérifie que le robot puisse aller là  ou il veut
+		Case dest = position.getVoisin(position, dir);
+		NatureTerrain natureDest = dest.getNature();
+		switch (natureDest) {
+		case HABITAT:
+			return true;
+		case TERRAIN_LIBRE:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	@Override
+	public void modifVitesse(Direction dir) {
+		//Rien en particulier pour le robot à roues
 	}
 
 	@Override
@@ -42,6 +69,7 @@ public class RobotARoue extends Robot {
 	public void setDebit(int debit) {
 		this.debit = debit;
 	}
+	
 	
 	
 }

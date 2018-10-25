@@ -1,5 +1,4 @@
 package carte;
-import java.util.ArrayList;
 
 public class Carte {
 	private int tailleCases=100;
@@ -15,6 +14,8 @@ public class Carte {
 			for (int j = 0; j<nbC; j++) {
 				this.map[i*nbL + j].ligne = i;
 				this.map[i*nbL + j].colonne = j;
+				this.map[i*nbL + j].nbLignes = nbLignes;
+				this.map[i*nbL + j].nbColonnes = nbColonnes;
 			}
 		}
 	}
@@ -32,46 +33,5 @@ public class Carte {
 		return this.map[ligne*this.nbColonnes+colonne];
 	}
 	
-	public boolean voisinExiste(Case src, Direction dir) {
-		if (dir == Direction.NORD) {
-			return src.ligne != 0;
-		}
-		
-		else if (dir == Direction.SUD) {
-			return src.ligne != (this.nbLignes - 1);
-		}
-		
-		else if (dir == Direction.EST) {
-			return src.colonne != (this.nbColonnes - 1);
-		}
-		
-		else {
-			return src.colonne != 0;
-		}
-	}
 	
-	public Case getVoisin(Case src, Direction dir) {
-		if (this.voisinExiste(src, dir)) {
-			
-			if (dir == Direction.NORD) {
-				return this.getCase(src.ligne - 1, src.colonne);
-			}
-		
-			else if (dir == Direction.SUD) {
-				return this.getCase(src.ligne + 1, src.colonne);
-			}
-		
-			else if (dir == Direction.EST) {
-				return this.getCase(src.ligne, src.colonne + 1);
-			}
-			
-			else {
-				return this.getCase(src.ligne, src.colonne - 1);
-			}
-			
-		}
-		else {
-			return this.getCase(src.ligne, src.colonne);
-		}
-	}
 }
