@@ -1,11 +1,14 @@
 package carte;
 
+import java.util.HashMap;
+
 public class Case {
 	public int ligne, colonne;
 	private NatureTerrain nature = NatureTerrain.TERRAIN_LIBRE;
 	protected int nbLignes;
 	protected int nbColonnes;
 	private int incendie = 0;
+	HashMap <Direction,Case> voisins;
 
 	public int getLigne() {
 		return ligne;
@@ -18,7 +21,7 @@ public class Case {
 	public NatureTerrain getNature() {
 		return nature;
 	}
-
+	
 	public int getIncendie() {
 		return incendie;
 	}
@@ -27,35 +30,36 @@ public class Case {
 		this.incendie = incendie;
 	}
 
-	public boolean voisinExiste(Case src, Direction dir) {
+
+	public boolean voisinExiste(Direction dir) {
 		if (dir == Direction.NORD) {
-			return src.ligne != 0;
+			return this.ligne != 0;
 		}
 
 		else if (dir == Direction.SUD) {
-			return src.ligne != (this.nbLignes - 1);
+			return this.ligne != (this.nbLignes - 1);
 		}
 
 		else if (dir == Direction.EST) {
-			return src.colonne != (this.nbColonnes - 1);
+			return this.colonne != (this.nbColonnes - 1);
 		}
 
 		else {
-			return src.colonne != 0;
+			return this.colonne != 0;
 		}
 	}
 
 	public void setNature(String chaineNature) {
 		if (chaineNature.equals("FORET"))
-			this.nature = NatureTerrain.FORET;
+			this.nature=NatureTerrain.FORET;
 		else if (chaineNature.equals("EAU"))
-			this.nature = NatureTerrain.EAU;
+			this.nature=NatureTerrain.EAU;
 		else if (chaineNature.equals("ROCHE"))
-			this.nature = NatureTerrain.ROCHE;
+			this.nature=NatureTerrain.ROCHE;
 		else if (chaineNature.equals("TERRAIN_LIBRE"))
-			this.nature = NatureTerrain.TERRAIN_LIBRE;
-		else
-			this.nature = NatureTerrain.HABITAT;
+			this.nature=NatureTerrain.TERRAIN_LIBRE;
+		else 
+			this.nature=NatureTerrain.HABITAT;
 	}
 
 	public int getNbLignes() {
@@ -86,10 +90,18 @@ public class Case {
 		this.nature = nature;
 	}
 
-	@Override
-	public String toString() {
-		return "Case [ligne=" + ligne + ", colonne=" + colonne + ", nature=" + nature + ", incendie=" + incendie
-				+ "]\n";
+	public HashMap<Direction, Case> getVoisins() {
+		return voisins;
 	}
 
+	public void setVoisins(HashMap<Direction, Case> voisins) {
+		this.voisins = voisins;
+	}
+
+	@Override
+	public String toString() {
+		return "Case [ligne=" + ligne + ", colonne=" + colonne + ", nature=" + nature + ", incendie=" + incendie + "]\n";
+	}
+	
+	
 }
