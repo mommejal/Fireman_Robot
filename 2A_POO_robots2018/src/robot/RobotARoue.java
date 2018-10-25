@@ -32,7 +32,7 @@ public class RobotARoue extends Robot {
 	@Override
 	public boolean canMove(Direction dir) {
 		// Cette fonction vérifie que le robot puisse aller là  ou il veut
-		Case dest = position.getVoisin(position, dir);
+		Case dest = position.getVoisin(dir);
 		NatureTerrain natureDest = dest.getNature();
 		switch (natureDest) {
 		case HABITAT:

@@ -44,7 +44,7 @@ public class RobotAChenille extends Robot {
 		if (natureDep==NatureTerrain.FORET) {
 			vitesse *=2;
 		}
-		Case dest = position.getVoisin(position, dir);
+		Case dest = position.getVoisin(dir);
 		NatureTerrain natureDest = dest.getNature();
 		if (natureDest==NatureTerrain.FORET) {
 			vitesse /=2;
@@ -54,7 +54,7 @@ public class RobotAChenille extends Robot {
 	@Override
 	public boolean canMove(Direction dir) {
 		// Cette fonction vérifie que le robot puisse aller là  ou il veut
-		Case dest = position.getVoisin(position, dir);
+		Case dest = position.getVoisin(dir);
 		NatureTerrain natureDest = dest.getNature();
 		switch (natureDest) {
 		case EAU:

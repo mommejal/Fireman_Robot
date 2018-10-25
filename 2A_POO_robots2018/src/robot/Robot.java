@@ -5,9 +5,9 @@ import carte.Direction;
 import carte.NatureTerrain;
 
 public abstract class Robot {
-	Case position;
-	double vitesse=0;
-	int volume=0;
+	protected Case position;
+	protected double vitesse=0;
+	protected int volume=0;
 
 	public abstract void deverserEau(int vol);
 
@@ -42,7 +42,7 @@ public abstract class Robot {
 	public void move(Direction dir) {
 		if (this.canMove(dir)) {
 			this.modifVitesse(dir);
-//			this.setPosition(position.getVoisin(position, dir));
+			this.setPosition(position.getVoisin(dir));
 		}
 	}
 

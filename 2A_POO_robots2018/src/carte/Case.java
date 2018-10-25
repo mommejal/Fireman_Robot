@@ -8,7 +8,7 @@ public class Case {
 	protected int nbLignes;
 	protected int nbColonnes;
 	private int incendie = 0;
-	HashMap <Direction,Case> voisins;
+	protected HashMap <Direction,Case> voisins;
 
 	public int getLigne() {
 		return ligne;
@@ -101,6 +101,10 @@ public class Case {
 	@Override
 	public String toString() {
 		return "Case [ligne=" + ligne + ", colonne=" + colonne + ", nature=" + nature + ", incendie=" + incendie + "]\n";
+	}
+	
+	public Case getVoisin(Direction dir) {
+		return this.getVoisins().get(dir);
 	}
 	
 	

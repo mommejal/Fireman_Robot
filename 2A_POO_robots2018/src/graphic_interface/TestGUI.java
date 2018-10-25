@@ -1,13 +1,8 @@
 package graphic_interface;
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
+import carte.Carte;
 import gui.GUISimulator;
-import gui.Rectangle;
-import gui.Simulable;
-import gui.Text;
 
 
 public class TestGUI {
