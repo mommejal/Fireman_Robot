@@ -5,6 +5,7 @@ public class Case {
 	private NatureTerrain nature = NatureTerrain.TERRAIN_LIBRE;
 	protected int nbLignes;
 	protected int nbColonnes;
+	private int incendie = 0;
 
 	public int getLigne() {
 		return ligne;
@@ -17,6 +18,15 @@ public class Case {
 	public NatureTerrain getNature() {
 		return nature;
 	}
+	
+	public int getIncendie() {
+		return incendie;
+	}
+
+	public void setIncendie(int incendie) {
+		this.incendie = incendie;
+	}
+
 
 //	public void deplacer(Direction dir) {
 //		switch (dir) {
@@ -51,28 +61,75 @@ public class Case {
 		}
 	}
 
-	public Case getVoisin(Case src, Direction dir) {
-		if (this.voisinExiste(src, dir)) {
+//	public Case getVoisin(Case src, Direction dir) {
+//		if (this.voisinExiste(src, dir)) {
+//
+//			if (dir == Direction.NORD) {
+//				return this.getCase(src.ligne - 1, src.colonne);
+//			}
+//
+//			else if (dir == Direction.SUD) {
+//				return this.getCase(src.ligne + 1, src.colonne);
+//			}
+//
+//			else if (dir == Direction.EST) {
+//				return this.getCase(src.ligne, src.colonne + 1);
+//			}
+//
+//			else {
+//				return this.getCase(src.ligne, src.colonne - 1);
+//			}
+//
+//		} else {
+//			return this.getCase(src.ligne, src.colonne);
+//		}
+//	}
 
-			if (dir == Direction.NORD) {
-				return this.getCase(src.ligne - 1, src.colonne);
-			}
-
-			else if (dir == Direction.SUD) {
-				return this.getCase(src.ligne + 1, src.colonne);
-			}
-
-			else if (dir == Direction.EST) {
-				return this.getCase(src.ligne, src.colonne + 1);
-			}
-
-			else {
-				return this.getCase(src.ligne, src.colonne - 1);
-			}
-
-		} else {
-			return this.getCase(src.ligne, src.colonne);
-		}
+	public void setNature(String chaineNature) {
+		if (chaineNature.equals("FORET"))
+			this.nature=NatureTerrain.FORET;
+		else if (chaineNature.equals("EAU"))
+			this.nature=NatureTerrain.EAU;
+		else if (chaineNature.equals("ROCHE"))
+			this.nature=NatureTerrain.ROCHE;
+		else if (chaineNature.equals("TERRAIN_LIBRE"))
+			this.nature=NatureTerrain.TERRAIN_LIBRE;
+		else 
+			this.nature=NatureTerrain.HABITAT;
 	}
 
+	public int getNbLignes() {
+		return nbLignes;
+	}
+
+	public void setNbLignes(int nbLignes) {
+		this.nbLignes = nbLignes;
+	}
+
+	public int getNbColonnes() {
+		return nbColonnes;
+	}
+
+	public void setNbColonnes(int nbColonnes) {
+		this.nbColonnes = nbColonnes;
+	}
+
+	public void setLigne(int ligne) {
+		this.ligne = ligne;
+	}
+
+	public void setColonne(int colonne) {
+		this.colonne = colonne;
+	}
+
+	public void setNature(NatureTerrain nature) {
+		this.nature = nature;
+	}
+
+	@Override
+	public String toString() {
+		return "Case [ligne=" + ligne + ", colonne=" + colonne + ", nature=" + nature + ", incendie=" + incendie + "]\n";
+	}
+	
+	
 }

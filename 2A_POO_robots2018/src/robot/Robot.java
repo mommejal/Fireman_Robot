@@ -6,8 +6,8 @@ import carte.NatureTerrain;
 
 public abstract class Robot {
 	Case position;
-	double vitesse;
-	int volume;
+	double vitesse=0;
+	int volume=0;
 
 	public abstract void deverserEau(int vol);
 
@@ -42,8 +42,14 @@ public abstract class Robot {
 	public void move(Direction dir) {
 		if (this.canMove(dir)) {
 			this.modifVitesse(dir);
-			this.setPosition(position.getVoisin(position, dir));
+//			this.setPosition(position.getVoisin(position, dir));
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "Robot [position=" + position + ", vitesse=" + vitesse + ", volume=" + volume + "]\n";
+	}
+	
+	
 }
