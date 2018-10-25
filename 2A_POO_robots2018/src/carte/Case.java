@@ -18,21 +18,6 @@ public class Case {
 		return nature;
 	}
 
-//	public void deplacer(Direction dir) {
-//		switch (dir) {
-//		// Faut il empecher ici les mouvements en dehors de la carte ?
-//		case NORD:
-//			ligne--;
-//		case SUD:
-//			ligne++;
-//		case EST:
-//			colonne++;
-//		case OUEST:
-//			colonne--;
-//		default:
-//		}
-//	}
-
 	public boolean voisinExiste(Case src, Direction dir) {
 		if (dir == Direction.NORD) {
 			return src.ligne != 0;
@@ -51,28 +36,28 @@ public class Case {
 		}
 	}
 
-	public Case getVoisin(Case src, Direction dir) {
-		if (this.voisinExiste(src, dir)) {
-
-			if (dir == Direction.NORD) {
-				return this.getCase(src.ligne - 1, src.colonne);
-			}
-
-			else if (dir == Direction.SUD) {
-				return this.getCase(src.ligne + 1, src.colonne);
-			}
-
-			else if (dir == Direction.EST) {
-				return this.getCase(src.ligne, src.colonne + 1);
-			}
-
-			else {
-				return this.getCase(src.ligne, src.colonne - 1);
-			}
-
-		} else {
-			return this.getCase(src.ligne, src.colonne);
-		}
-	}
+//	public Case getVoisin(Direction dir) {
+//		if (this.voisinExiste(dir)) {
+//
+//			if (dir == Direction.NORD) {
+//				return this.getCase(src.ligne - 1, src.colonne);
+//			}
+//
+//			else if (dir == Direction.SUD) {
+//				return this.getCase(src.ligne + 1, src.colonne);
+//			}
+//
+//			else if (dir == Direction.EST) {
+//				return this.getCase(src.ligne, src.colonne + 1);
+//			}
+//
+//			else {
+//				return this.getCase(src.ligne, src.colonne - 1);
+//			}
+//
+//		} else {
+//			return this.getCase(src.ligne, src.colonne);
+//		}
+//	}
 
 }

@@ -1,7 +1,7 @@
 package carte;
 
 public class Carte {
-	private int tailleCases=100;
+	private int tailleCases=10000;
 	private int nbLignes;
 	private int nbColonnes;
 	private Case[] map;
