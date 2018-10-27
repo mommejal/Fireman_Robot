@@ -1,5 +1,7 @@
 package robot;
 
+import carte.Case;
+import carte.Direction;
 import carte.NatureTerrain;
 
 public class RobotARoue extends Robot {
@@ -23,6 +25,29 @@ public class RobotARoue extends Robot {
 //			sortie = a.getDate()<datefin);
 //		}
 //		this.setVolume(reservoirmax);
+	}
+	
+	
+	
+
+	@Override
+	public boolean canMove(Direction dir) {
+		// Cette fonction vérifie que le robot puisse aller là  ou il veut
+		Case dest = position.getVoisin(dir);
+		NatureTerrain natureDest = dest.getNature();
+		switch (natureDest) {
+		case HABITAT:
+			return true;
+		case TERRAIN_LIBRE:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	@Override
+	public void modifVitesse(Direction dir) {
+		//Rien en particulier pour le robot à roues
 	}
 
 	@Override

@@ -1,14 +1,12 @@
 package robot;
-
 import carte.Case;
-import carte.NatureTerrain;
 
 public abstract class Robot {
-	Case position;
-	double vitesse;
-	int volume;
 	Case voisins[];
-	
+	protected Case position;
+	protected double vitesse=0;
+	protected int volume=0;
+
 	public abstract void deverserEau(int vol);
 	
 	abstract public void remplirReservoir();
@@ -40,7 +38,22 @@ public abstract class Robot {
 	public void setPosition(Case position) {
 		this.position = position;
 	}
+	
+	public abstract boolean canMove(Direction dir);
+	
+	public abstract void modifVitesse(Direction dir);
+	
+	public void move(Direction dir) {
+		if (this.canMove(dir)) {
+			this.modifVitesse(dir);
+			this.setPosition(position.getVoisin(dir));
+		}
+	}
 
+	@Override
+	public String toString() {
+		return "Robot [position=" + position + ", vitesse=" + vitesse + ", volume=" + volume + "]\n";
+	}
 	
 	
 }

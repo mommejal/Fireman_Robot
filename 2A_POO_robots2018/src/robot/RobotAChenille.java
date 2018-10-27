@@ -1,6 +1,6 @@
 package robot;
-
 import carte.Case;
+import carte.Direction;
 import carte.NatureTerrain;
 
 public class RobotAChenille extends Robot {
