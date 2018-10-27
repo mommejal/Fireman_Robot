@@ -1,9 +1,13 @@
 package robot;
 
+import carte.Case;
+import carte.NatureTerrain;
+
 public abstract class Robot {
 	Case position;
 	double vitesse;
 	int volume;
+	Case voisins[];
 	
 	public abstract void deverserEau(int vol);
 	

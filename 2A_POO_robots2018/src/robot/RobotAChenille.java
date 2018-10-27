@@ -1,5 +1,8 @@
 package robot;
 
+import carte.Case;
+import carte.NatureTerrain;
+
 public class RobotAChenille extends Robot {
 	
 	int reservoirmax = 2000;
@@ -8,7 +11,18 @@ public class RobotAChenille extends Robot {
 	
 	
 	@Override
+	public double getVitesse(NatureTerrain nature) {
+		if (nature.equals(NatureTerrain.FORET)) {
+			return vitesse/2;
+		}
+		else {
+			return vitesse;
+		}
+	}
+
+	@Override
 	public void deverserEau(int vol) {
+		// TODO Gérer le temps
 		if (volume>debit) {
 			volume -= debit;
 		}
@@ -17,13 +31,20 @@ public class RobotAChenille extends Robot {
 
 	@Override
 	public void remplirReservoir() {
-		// TODO Auto-generated method stub
+	    for(Case voisin : voisins){
+	    	if (voisin.getNature() == NatureTerrain.EAU) {
+	    		//TODO Gérer le temps
+	    		volume = reservoirmax;
+	      }
 		
+	}
 	}
 
 	@Override
 	public void setVitesse(double vitesse) {
-		// TODO Auto-generated method stub
+		if (vitesse > 80) {
+			vitesse = 80;
+		}
 		super.setVitesse(vitesse);
 	}
 	

@@ -1,11 +1,14 @@
 package robot;
 
+import carte.NatureTerrain;
+
 public class RobotARoue extends Robot {
 	int reservoirmax = 5000;
 	int debit = 100/5;
 	double vitesse = 80;
 	@Override
 	public void deverserEau(int vol) {
+		//100 litres en 5 sec
 		if (volume>debit) {
 			volume -= debit;
 		}
