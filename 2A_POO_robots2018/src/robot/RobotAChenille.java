@@ -6,7 +6,7 @@ import carte.NatureTerrain;
 public class RobotAChenille extends Robot {
 	
 	int reservoirmax = 2000;
-	int debit = 100/5;
+	double debit = 100/5;
 	double vitesse = 60;
 	
 	
@@ -21,19 +21,10 @@ public class RobotAChenille extends Robot {
 	}
 
 	@Override
-	public void deverserEau(int vol) {
-		// TODO GÈrer le temps
-		if (volume>debit) {
-			volume -= debit;
-		}
-		
-	}
-
-	@Override
 	public void remplirReservoir() {
-	    for(Case voisin : voisins){
+	    for(Case voisin : position.getVoisins().values()){
 	    	if (voisin.getNature() == NatureTerrain.EAU) {
-	    		//TODO GÈrer le temps
+	    		//TODO GÔøΩrer le temps
 	    		volume = reservoirmax;
 	      }
 		
@@ -46,6 +37,34 @@ public class RobotAChenille extends Robot {
 			vitesse = 80;
 		}
 		super.setVitesse(vitesse);
+	}
+
+	@Override
+	public boolean canMove(Direction dir) {
+		// Cette fonction v√©rifie que le robot puisse aller l√†  ou il veut
+		Case dest = position.getVoisin(dir);
+		NatureTerrain natureDest = dest.getNature();
+		switch (natureDest) {
+		case ROCHE:
+			return false;
+		case EAU:
+			return false;
+		default:
+			return true;
+		}
+	}
+
+	@Override
+	public void modifVitesse(Direction dir) {
+		Case dest = position.getVoisin(dir);
+		NatureTerrain natureDest = dest.getNature();
+		NatureTerrain naturePos = position.getNature();
+		if ((naturePos == NatureTerrain.FORET)&&(natureDest!=NatureTerrain.FORET)){
+			this.setVitesse(vitesse*2);
+		}
+		if ((naturePos != NatureTerrain.FORET)&&(natureDest==NatureTerrain.FORET)){
+			this.setVitesse(vitesse/2);
+		}
 	}
 	
 }

@@ -1,17 +1,32 @@
 package robot;
 
+import carte.Direction;
 import carte.NatureTerrain;
 
 public class Drone extends Robot {
 	double vitesse = 100;
-	int debit = 10000/30;
+	double debit = 10000/30;
 	int reservoirmax = 10000;
 	
 	@Override
 	public void deverserEau(int vol) {
-		//TODO Gérer le temps 30 sec pour se vider
 		volume = 0;
-		
+		int extinction;
+		if (position.getIncendie()==0) {
+			//On ne fait rien
+		}
+		else {
+			extinction = vol;
+			if (extinction >= volume) {
+				position.setIncendie(position.getIncendie()-volume);
+				this.setVolume(0);
+			}
+			else {
+				position.setIncendie(position.getIncendie()-extinction);
+				this.setVolume(volume-extinction);
+			}
+		}
+
 	}
 
 	@Override
@@ -19,7 +34,7 @@ public class Drone extends Robot {
 		if (this.getPosition().getNature()==NatureTerrain.EAU) {
 			volume = reservoirmax;
 		}	
-		//TODO Gérer le temps 30 min de recharge	
+		//TODO Gï¿½rer le temps 30 min de recharge	
 	}
 
 	@Override
@@ -33,6 +48,19 @@ public class Drone extends Robot {
 		}
 		this.vitesse = vitesse;
 	}
+
+	@Override
+	public boolean canMove(Direction dir) {
+		// Le drone peut se deplacer sur tous les terrains
+		return true;
+	}
+
+	@Override
+	public void modifVitesse(Direction dir) {
+		// Ne fait rien, la vitesse du drone ne dÃ©pend pas du terrain
+		
+	}
+	
 	
 	
 }
