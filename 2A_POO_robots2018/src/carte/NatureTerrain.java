@@ -1,8 +1,8 @@
 package carte;
 public enum NatureTerrain{
-	EAU, 
-	FORET, 
-	ROCHE,
-	TERRAIN_LIBRE,
-	HABITAT
+	EAU, //Bleu
+	FORET, //Vert
+	ROCHE, //Gris
+	TERRAIN_LIBRE, //Marron
+	HABITAT //Beige
 }

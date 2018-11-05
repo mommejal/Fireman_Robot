@@ -31,7 +31,7 @@ import robot.RobotARoue;
  * contenant toutes les données lues: public static DonneesSimulation
  * creeDonnees(String fichierDonnees); Et faire des méthode creeCase(),
  * creeRobot(), ... qui lisent les données, créent les objets adéquats et les
- * ajoutent ds l'instance de DonneesSimulation.
+ * ajoutentstatic  ds l'instance de DonneesSimulation.
  */
 public class LecteurDonnees {
 	static Carte carte;
@@ -310,7 +310,7 @@ public class LecteurDonnees {
 		}
 	}
 
-	public Carte getCarte() {
+	static public Carte getCarte() {
 		return carte;
 	}
 

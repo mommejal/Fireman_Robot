@@ -6,7 +6,7 @@ import java.util.Arrays;
 import robot.Robot;
 
 public class Carte {
-	private int tailleCases=100;
+	private int tailleCases;
 	private int nbLignes;
 	private int nbColonnes;
 	private int nbIncendies = 0;
