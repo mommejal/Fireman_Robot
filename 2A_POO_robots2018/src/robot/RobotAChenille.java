@@ -1,72 +1,70 @@
 package robot;
-
 import carte.Case;
 import carte.Direction;
 import carte.NatureTerrain;
 
 public class RobotAChenille extends Robot {
-
+	
 	int reservoirmax = 2000;
-	int debit = 100 / 5;
+	double debit = 100/5;
 	double vitesse = 60;
-
+	
+	
 	@Override
-	public void deverserEau(int vol) {
-		if (volume > debit) {
-			volume -= debit;
+	public double getVitesse(NatureTerrain nature) {
+		if (nature.equals(NatureTerrain.FORET)) {
+			return vitesse/2;
 		}
-
+		else {
+			return vitesse;
+		}
 	}
 
 	@Override
 	public void remplirReservoir() {
-		// TODO Auto-generated method stub
-
+	    for(Case voisin : position.getVoisins().values()){
+	    	if (voisin.getNature() == NatureTerrain.EAU) {
+	    		//TODO G�rer le temps
+	    		volume = reservoirmax;
+	      }
+		
+	}
 	}
 
 	@Override
 	public void setVitesse(double vitesse) {
-		// TODO Auto-generated method stub
+		if (vitesse > 80) {
+			vitesse = 80;
+		}
 		super.setVitesse(vitesse);
-	}
-
-	@Override
-	public double getVitesse(NatureTerrain nature) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	
-	
-	@Override
-	public void modifVitesse(Direction dir) {
-		NatureTerrain natureDep = position.getNature();
-		if (natureDep==NatureTerrain.FORET) {
-			vitesse *=2;
-		}
-		Case dest = position.getVoisin(position, dir);
-		NatureTerrain natureDest = dest.getNature();
-		if (natureDest==NatureTerrain.FORET) {
-			vitesse /=2;
-		}
 	}
 
 	@Override
 	public boolean canMove(Direction dir) {
 		// Cette fonction vérifie que le robot puisse aller là  ou il veut
-		Case dest = position.getVoisin(position, dir);
+		Case dest = position.getVoisin(dir);
 		NatureTerrain natureDest = dest.getNature();
 		switch (natureDest) {
-		case EAU:
-			return false;
 		case ROCHE:
 			return false;
-		case FORET:
-			return true;
+		case EAU:
+			return false;
 		default:
 			return true;
 		}
-
 	}
 
+	@Override
+	public void modifVitesse(Direction dir) {
+		Case dest = position.getVoisin(dir);
+		NatureTerrain natureDest = dest.getNature();
+		NatureTerrain naturePos = position.getNature();
+		if ((naturePos == NatureTerrain.FORET)&&(natureDest!=NatureTerrain.FORET)){
+			this.setVitesse(vitesse*2);
+		}
+		if ((naturePos != NatureTerrain.FORET)&&(natureDest==NatureTerrain.FORET)){
+			this.setVitesse(vitesse/2);
+		}
+	}
+	
 }

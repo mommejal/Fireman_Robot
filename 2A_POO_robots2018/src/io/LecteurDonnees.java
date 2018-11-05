@@ -9,7 +9,6 @@ import java.util.zip.DataFormatException;
 
 import carte.Carte;
 import carte.Case;
-import robot.Drone2;
 import robot.Robot;
 import robot.RobotAChenille;
 import robot.RobotARoue;

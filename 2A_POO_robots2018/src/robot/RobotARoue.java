@@ -6,15 +6,9 @@ import carte.NatureTerrain;
 
 public class RobotARoue extends Robot {
 	int reservoirmax = 5000;
-	int debit = 100/5;
+	double debit = 100/5;
 	double vitesse = 80;
-	@Override
-	public void deverserEau(int vol) {
-		if (volume>debit) {
-			volume -= debit;
-		}
-	}
-	
+
 	@Override
 	public void remplirReservoir() {
 //		long datefin = a.getDate()+30*60; //Temps pour se remplir
@@ -32,7 +26,7 @@ public class RobotARoue extends Robot {
 	@Override
 	public boolean canMove(Direction dir) {
 		// Cette fonction vérifie que le robot puisse aller là  ou il veut
-		Case dest = position.getVoisin(position, dir);
+		Case dest = position.getVoisin(dir);
 		NatureTerrain natureDest = dest.getNature();
 		switch (natureDest) {
 		case HABITAT:
@@ -62,14 +56,13 @@ public class RobotARoue extends Robot {
 		this.reservoirmax = reservoirmax;
 	}
 
-	public int getDebit() {
+	public double getDebit() {
 		return debit;
 	}
 
 	public void setDebit(int debit) {
 		this.debit = debit;
 	}
-	
 	
 	
 }
