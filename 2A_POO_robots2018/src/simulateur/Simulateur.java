@@ -9,24 +9,26 @@ public class Simulateur {
 	private Evenement currentEvent;
 	
 	public void ajouteEvenement(Evenement e) {
-		if (events.peekFirst()!=null) {
-			Evenement dernier = events.getLast();
-			this.setDateSimulation(dernier.getDate() + e.getDuree());
-		}
-		else {
-			this.setDateSimulation(0);
-		}
-		events.add(e);
+//		if (events.peekFirst()!=null) {
+//			Evenement dernier = events.getLast();
+//			e.setDate(dernier.getDate() + e.getDuree());
+//		}
+//		else {
+//			this.setDateSimulation(0);
+//		}
+		events.addFirst(e);
 	}
 	
 	public void execEvenement() {
-		currentEvent = events.pollFirst();
+		
+		currentEvent = events.pollLast();
+//		System.out.println(currentEvent.toString());
 		incrementeDate();
 		currentEvent.execute();
 	}
 	
 	private void incrementeDate() {
-		dateSimulation += currentEvent.getDuree();
+		this.dateSimulation += currentEvent.getDuree();
 	}
 	
 	public boolean simulationTerminee() {

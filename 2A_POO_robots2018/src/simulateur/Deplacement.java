@@ -26,4 +26,13 @@ public class Deplacement extends Evenement {
 		robot.move(dir);
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "Deplacement [dir=" + dir + "]\n";
+	}
+	
+	
+	
 }

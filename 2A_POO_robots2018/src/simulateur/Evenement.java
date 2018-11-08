@@ -18,7 +18,13 @@ public abstract class Evenement {
 
 	
 	
+	public void setDate(long date) {
+		this.date = date;
+	}
+
 	abstract public long getDuree();
 
 	abstract public void execute();
+	
+	
 }

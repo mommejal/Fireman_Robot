@@ -9,8 +9,10 @@ import java.util.zip.DataFormatException;
 
 import carte.Carte;
 import carte.Case;
+import robot.Drone;
 import robot.Robot;
 import robot.RobotAChenille;
+import robot.RobotAPattes;
 import robot.RobotARoue;
 
 /**
@@ -245,7 +247,7 @@ public class LecteurDonnees {
 			
 			switch (type) {
 			case "DRONE": //TODO
-				robot = new RobotARoue();
+				robot = new Drone();
 				carte.getRobots().add(robot);
 				break;
 			case "ROUES":
@@ -254,7 +256,7 @@ public class LecteurDonnees {
 				break;
 			case "PATTES":
 //				TODO
-				robot = new RobotARoue();
+				robot = new RobotAPattes();
 				carte.getRobots().add(robot);
 				break;
 			case "CHENILLES":

@@ -19,8 +19,8 @@ public class GUI implements Simulable {
 	
 	private GUISimulator gui;
 	private Carte carte;
-	private Simulateur simulateur = new Simulateur();
-	private long intervalle = 1;
+	public Simulateur simulateur;
+	private long intervalle = 100;
 	private long date_actuelle = 0;
 	
 	
@@ -81,12 +81,15 @@ public class GUI implements Simulable {
 
 	@Override
     public void next() {
+		System.out.println(this.simulateur.getEvents().toString());
         this.date_actuelle += intervalle;
         Deque <Evenement> iterateurEvenement = simulateur.getEvents();
         Evenement event = iterateurEvenement.peekFirst();
-        while (!simulateur.simulationTerminee() && (event.getDate()<date_actuelle)) {
-        	simulateur.execEvenement();
-        } 
+        simulateur.execEvenement();
+        afficher(carte, gui);
+//        while (!simulateur.simulationTerminee() && (event.getDate()<date_actuelle)) {
+//        	simulateur.execEvenement();
+//        } 
     }
 
     @Override
@@ -103,6 +106,15 @@ public class GUI implements Simulable {
 	public Simulateur getSimulateur() {
 		return simulateur;
 	}
+
+
+
+	public void setSimulateur(Simulateur simulateur) {
+		this.simulateur = simulateur;
+	
+	}
+	
+	
     
     
 }
