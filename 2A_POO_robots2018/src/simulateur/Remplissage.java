@@ -4,8 +4,8 @@ import robot.Robot;
 
 public class Remplissage extends Evenement {
 
-	public Remplissage(long date, Robot robot) {
-		super(date, robot);
+	public Remplissage(Robot robot) {
+		super(robot);
 	}
 	
 	@Override

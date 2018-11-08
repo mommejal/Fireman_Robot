@@ -8,8 +8,7 @@ public abstract class Evenement {
 	protected Robot robot;
 	private long duree;
 
-	public Evenement(long date, Robot robot) {
-		this.date = date;
+	public Evenement(Robot robot) {
 		this.robot = robot;
 	}
 

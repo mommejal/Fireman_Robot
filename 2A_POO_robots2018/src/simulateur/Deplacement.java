@@ -7,8 +7,8 @@ public class Deplacement extends Evenement {
 
 	Direction dir;
 
-	public Deplacement(long date, Direction dir, Robot robot) {
-		super(date,robot);
+	public Deplacement(Direction dir, Robot robot) {
+		super(robot);
 		this.dir = dir;
 	}
 	

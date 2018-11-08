@@ -7,8 +7,8 @@ import robot.Robot;
 public class Intervention extends Evenement{
 	private Robot robot;
 
-	public Intervention(long date, Robot robot) {
-		super(date, robot);
+	public Intervention(Robot robot) {
+		super(robot);
 	}
 	
 	
