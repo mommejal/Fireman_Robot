@@ -40,6 +40,10 @@ public class TestSimDiscrete {
         simulateur.ajouteEvenement(new Deplacement(Direction.SUD,carte.getRobots().get(0)));
         simulateur.ajouteEvenement(new Deplacement(Direction.SUD,carte.getRobots().get(0)));
         simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
         simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
         simulateur.ajouteEvenement(new Deplacement(Direction.OUEST,carte.getRobots().get(1)));
         simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
