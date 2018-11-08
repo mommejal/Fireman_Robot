@@ -1,5 +1,6 @@
 package robot;
 
+import carte.Carte;
 import carte.Case;
 import carte.Direction;
 import carte.NatureTerrain;
@@ -8,6 +9,16 @@ public class RobotARoue extends Robot {
 	int reservoirmax = 5000;
 	double debit = 100/5;
 	double vitesse = 80;
+
+	
+	
+	public RobotARoue(Carte carte) {
+		super(carte);
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 
 	@Override
 	public void remplirReservoir() {
@@ -25,7 +36,7 @@ public class RobotARoue extends Robot {
 
 	@Override
 	public long dureeRemplirReservoir() {
-		return 600;		
+		return (long)600;		
 	}
 
 

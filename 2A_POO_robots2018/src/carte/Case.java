@@ -117,6 +117,7 @@ public class Case {
 	public Case getVoisin(Direction dir) {
 		return this.getVoisins().get(dir);
 	}
+
 	
 	
 }

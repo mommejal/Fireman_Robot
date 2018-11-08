@@ -1,4 +1,5 @@
 package robot;
+import carte.Carte;
 import carte.Case;
 import carte.Direction;
 import carte.NatureTerrain;
@@ -10,6 +11,11 @@ public class RobotAChenille extends Robot {
 	double vitesse = 60;
 	
 	
+	public RobotAChenille(Carte carte) {
+		super(carte);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public double getVitesse(NatureTerrain nature) {
 		if (nature.equals(NatureTerrain.FORET)) {

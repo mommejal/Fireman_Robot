@@ -45,7 +45,6 @@ public class GUI implements Simulable {
 		gui.reset();
 	    for (int i=0; i<carte.getNbLignes(); i++) {
 	    	for (int j=0; j<carte.getNbColonnes(); j++) {
-	    		System.out.println(i+","+ j+"\n");
 	    		switch (carte.getCase(i, j).getNature()) {
 	    		case EAU:
 	    			gui.addGraphicalElement(new Rectangle(carte.getTailleCases()/2+j*carte.getTailleCases(), carte.getTailleCases()/2+i*carte.getTailleCases(), Color.black, Color.blue, carte.getTailleCases()));
@@ -74,6 +73,7 @@ public class GUI implements Simulable {
 	    	gui.addGraphicalElement(new Rectangle(3*carte.getTailleCases()/4+j*carte.getTailleCases(), 3*carte.getTailleCases()/4+i*carte.getTailleCases(), Color.black, Color.red, carte.getTailleCases()/2));
 //			gui.addGraphicalElement(new Text(carte.getTailleCases()/2+j*carte.getTailleCases(),carte.getTailleCases()/2+j*carte.getTailleCases(),Color.black, ));
 	    }
+	    carte.getCase(5, 5).toString();
 
 	    
 	}
@@ -86,7 +86,9 @@ public class GUI implements Simulable {
         Deque <Evenement> iterateurEvenement = simulateur.getEvents();
         Evenement event = iterateurEvenement.peekFirst();
         simulateur.execEvenement();
+        System.out.println(carte.getCase(5, 5).toString());
         afficher(carte, gui);
+
 //        while (!simulateur.simulationTerminee() && (event.getDate()<date_actuelle)) {
 //        	simulateur.execEvenement();
 //        } 

@@ -1,4 +1,5 @@
 package robot;
+import carte.Carte;
 import carte.Case;
 import carte.Direction;
 import carte.NatureTerrain;
@@ -8,16 +9,27 @@ public abstract class Robot {
 	 * La classe abstraite Robot regroupe les méthodes <b>générales</b> à tous les robots
 	 * Cela permet de factoriser grandement le code notamment les methodes de mouvement des robots
 	 */
+	protected Carte carte;
 	protected Case position;
 	protected double vitesse=0;
-	protected int volume=0;
+	protected int reservoirmax;
+	protected int volume = reservoirmax;
 	protected double debit;
 	
+	
+	
+	public Robot(Carte carte) {
+		super();
+		this.carte = carte;
+	}
+
 	/**
 	 * Deverse au max le volume entré en parametre mais peut verser moins si l'incendie est moins élévé que prévu
 	 * Utilise uniquement le volume d'eau requis
 	 */
 	public void deverserEau(int vol) {
+		int i = position.getLigne();
+		int j = position.getColonne();
 
 		int extinction;
 		if (vol > position.getIncendie()) {
@@ -28,11 +40,11 @@ public abstract class Robot {
 			extinction = vol;
 		}
 		if (extinction >= volume) {
-			position.setIncendie(position.getIncendie()-volume);
+			carte.getCase(i, j).setIncendie(position.getIncendie()-volume);
 			this.setVolume(0);
 		}
 		else {
-			position.setIncendie(position.getIncendie()-extinction);
+			carte.getCase(i, j).setIncendie(carte.getCase(i, j).getIncendie()-extinction);
 			this.setVolume(volume-extinction);
 		}
 	}
@@ -95,7 +107,7 @@ public abstract class Robot {
 	 * @param dir est la direction vers laquelle veut se deplacer le robot
 	 */
 	public void move(Direction dir) {
-		System.out.println("case avant :"+position);
+//		System.out.println("case avant :"+position);
 		System.out.println(this.canMove(dir));
 		System.out.println(voisinExiste(dir));
 		if (this.canMove(dir) && voisinExiste(dir)) {
@@ -106,12 +118,20 @@ public abstract class Robot {
 		else {
 			throw new IllegalArgumentException("La case doit exister et etre accessible au robot");
 		}
-		System.out.println("case apres :"+position+dir);
+//		System.out.println("case apres :"+position+dir);
 	}
 
 	@Override
 	public String toString() {
 		return "Robot [position=" + position + ", vitesse=" + vitesse + ", volume=" + volume + "]\n";
+	}
+
+	public Carte getCarte() {
+		return carte;
+	}
+
+	public void setCarte(Carte carte) {
+		this.carte = carte;
 	}
 	
 	

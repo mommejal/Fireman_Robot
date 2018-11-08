@@ -1,5 +1,6 @@
 package robot;
 
+import carte.Carte;
 import carte.Direction;
 import carte.NatureTerrain;
 
@@ -8,6 +9,15 @@ public class Drone extends Robot {
 	double debit = 10000/30;
 	int reservoirmax = 10000;
 	
+	
+	
+	public Drone(Carte carte) {
+		super(carte);
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	@Override
 	public void deverserEau(int vol) {
 		volume = 0;

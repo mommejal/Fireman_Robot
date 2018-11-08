@@ -5,7 +5,6 @@ import javax.swing.text.html.MinimalHTMLWriter;
 import robot.Robot;
 
 public class Intervention extends Evenement{
-	private Robot robot;
 
 	public Intervention(Robot robot) {
 		super(robot);
@@ -25,6 +24,14 @@ public class Intervention extends Evenement{
 	public void execute() {
 		robot.deverserEau(robot.getPosition().getIncendie());
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Intervention [robot=" + robot + "]";
+	}
+	
 	
 	
 

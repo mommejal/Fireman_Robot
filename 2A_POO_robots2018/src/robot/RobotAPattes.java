@@ -1,5 +1,6 @@
 package robot;
 
+import carte.Carte;
 import carte.Case;
 import carte.Direction;
 import carte.NatureTerrain;
@@ -8,6 +9,13 @@ public class RobotAPattes extends Robot {
 	
 	double debit = 10;
 	double vitesse = 30;
+	
+	public RobotAPattes(Carte carte) {
+		super(carte);
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	@Override
 	public void remplirReservoir() {

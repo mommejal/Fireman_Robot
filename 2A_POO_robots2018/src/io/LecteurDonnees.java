@@ -54,6 +54,9 @@ public class LecteurDonnees {
 		scanner.close();
 		System.out.println("\n == Lecture terminee");
 		System.out.println(carte.toString());
+		for (Robot rob : carte.getRobots()) {
+			rob.setCarte(carte);
+		}
 	}
 
 	// Tout le reste de la classe est prive!
@@ -247,20 +250,20 @@ public class LecteurDonnees {
 			
 			switch (type) {
 			case "DRONE": //TODO
-				robot = new Drone();
+				robot = new Drone(carte);
 				carte.getRobots().add(robot);
 				break;
 			case "ROUES":
-				robot = new RobotARoue();
+				robot = new RobotARoue(carte);
 				carte.getRobots().add(robot);
 				break;
 			case "PATTES":
 //				TODO
-				robot = new RobotAPattes();
+				robot = new RobotAPattes(carte);
 				carte.getRobots().add(robot);
 				break;
 			case "CHENILLES":
-				robot = new RobotAChenille();
+				robot = new RobotAChenille(carte);
 				carte.getRobots().add(robot);
 				break;
 			default:
@@ -268,6 +271,9 @@ public class LecteurDonnees {
 				break;
 			}
 			robot.setPosition(carte.getMap()[lig*carte.getNbColonnes()+col]);
+			if(robot.getPosition().equals(carte.getMap()[lig*carte.getNbColonnes()+col])) {
+				System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+			}
 
 //			System.out.print("\t type = " + type);
 
