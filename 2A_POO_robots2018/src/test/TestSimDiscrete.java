@@ -32,13 +32,11 @@ public class TestSimDiscrete {
         carte.setTailleCases(50);
         GUISimulator gui = new GUISimulator(800, 800, Color.BLACK);
         GUI gui_carte = new GUI(carte, gui);
+        gui_carte.setCarteInitiale(carte);
         Simulateur simulateur = gui_carte.getSimulateur();
         
         // Ajout d'évenements
-        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
-        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
-        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
-        
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));   
         
         
 	}

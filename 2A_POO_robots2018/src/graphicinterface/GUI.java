@@ -16,7 +16,7 @@ import simulateur.Simulateur;
 
 
 public class GUI implements Simulable {
-	
+	private Carte carteInitiale;
 	private GUISimulator gui;
 	private Carte carte;
 	private Simulateur simulateur = new Simulateur();
@@ -38,6 +38,7 @@ public class GUI implements Simulable {
 //        gui.setSimulable(this);
 //        afficher(carte, gui);
 //	}
+	
 	
 	
 	
@@ -79,6 +80,20 @@ public class GUI implements Simulable {
 	}
 
 
+	public Carte getCarteInitiale() {
+		return carteInitiale;
+	}
+
+
+
+
+	public void setCarteInitiale(Carte carteInitiale) {
+		this.carteInitiale = carteInitiale;
+	}
+
+
+
+
 	@Override
     public void next() {
         this.date_actuelle += intervalle;
@@ -86,15 +101,14 @@ public class GUI implements Simulable {
         Evenement event = iterateurEvenement.peekFirst();
         while (!simulateur.simulationTerminee() && (event.getDate()<date_actuelle)) {
         	simulateur.execEvenement();
-        } 
+        }
+        afficher(carte, gui);
     }
 
     @Override
     public void restart() {
     	gui.reset();
-        Carte carte = LecteurDonnees.getCarte();
-        carte.setTailleCases(50);
-    	afficher(carte, gui);
+    	afficher(carteInitiale, gui);
 //       
     }
 

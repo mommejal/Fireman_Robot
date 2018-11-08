@@ -95,10 +95,12 @@ public abstract class Robot {
 	 * @param dir est la direction vers laquelle veut se deplacer le robot
 	 */
 	public void move(Direction dir) {
+		System.out.println("case avant :"+ position);
 		if (this.canMove(dir) && voisinExiste(dir)) {
 			this.modifVitesse(dir);
 			this.setPosition(position.getVoisin(dir));
 		}
+		System.out.println("case après :"+ position);
 	}
 
 	@Override
