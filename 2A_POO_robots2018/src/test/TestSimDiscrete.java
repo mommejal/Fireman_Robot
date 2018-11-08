@@ -32,11 +32,30 @@ public class TestSimDiscrete {
         carte.setTailleCases(50);
         GUISimulator gui = new GUISimulator(800, 800, Color.BLACK);
         GUI gui_carte = new GUI(carte, gui);
-        gui_carte.setCarteInitiale(carte);
-        Simulateur simulateur = gui_carte.getSimulateur();
+//        Simulateur simulateur = gui_carte.getSimulateur();
+        Simulateur simulateur = new Simulateur();
         
         // Ajout d'évenements
-        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));   
+        simulateur.ajouteEvenement(new Deplacement(Direction.EST,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.SUD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.SUD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.OUEST,carte.getRobots().get(1)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(2)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(2)));
+        simulateur.getEvents().getLast().toString();
+        gui_carte.setSimulateur(simulateur);
+        gui_carte.getSimulateur().getEvents().toString();
+//        System.out.println(new Deplacement(Direction.NORD,carte.getRobots().get(0)).toString());
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa");
+        
         
         
 	}
