@@ -27,7 +27,5 @@ public class TestGUI {
         carte.setTailleCases(50);
         GUISimulator gui = new GUISimulator(800, 800, Color.BLACK);
         GUI.afficher(carte, gui);
-        
-        
     }
 }
