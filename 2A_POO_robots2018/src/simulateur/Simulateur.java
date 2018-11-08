@@ -1,15 +1,15 @@
 package simulateur;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Queue;
 
 public class Simulateur {
 	private long dateSimulation; //Date courante de simulation
-	Deque <Evenement> events; // Liste des evenements
+	Deque <Evenement> events=new ArrayDeque<Evenement>(); // Liste des evenements
 	private Evenement currentEvent;
 	
 	public void ajouteEvenement(Evenement e) {
-		if (!events.isEmpty()) {
+		if (events.peekFirst()!=null) {
 			Evenement dernier = events.getLast();
 			this.setDateSimulation(dernier.getDate() + e.getDuree());
 		}
@@ -41,7 +41,7 @@ public class Simulateur {
 		this.dateSimulation = dateSimulation;
 	}
 
-	public Queue<Evenement> getEvents() {
+	public Deque<Evenement> getEvents() {
 		return events;
 	}
 

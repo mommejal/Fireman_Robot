@@ -1,12 +1,13 @@
 package graphicinterface;
 import java.awt.Color;
-import java.util.Queue;
+import java.util.Deque;
 
 import carte.Carte;
 import gui.GUISimulator;
 import gui.Rectangle;
 import gui.Simulable;
 import gui.Text;
+import io.LecteurDonnees;
 import robot.Robot;
 import simulateur.Evenement;
 import simulateur.Simulateur;
@@ -18,9 +19,9 @@ public class GUI implements Simulable {
 	
 	private GUISimulator gui;
 	private Carte carte;
-	private Simulateur simulateur;
-	private long intervalle;
-	private long date_actuelle;
+	private Simulateur simulateur = new Simulateur();
+	private long intervalle = 1;
+	private long date_actuelle = 0;
 	
 	
 	
@@ -81,8 +82,8 @@ public class GUI implements Simulable {
 	@Override
     public void next() {
         this.date_actuelle += intervalle;
-        Queue <Evenement> iterateurEvenement = simulateur.getEvents();
-        Evenement event = iterateurEvenement.peek();
+        Deque <Evenement> iterateurEvenement = simulateur.getEvents();
+        Evenement event = iterateurEvenement.peekFirst();
         while (!simulateur.simulationTerminee() && (event.getDate()<date_actuelle)) {
         	simulateur.execEvenement();
         } 
@@ -91,7 +92,17 @@ public class GUI implements Simulable {
     @Override
     public void restart() {
     	gui.reset();
+        Carte carte = LecteurDonnees.getCarte();
+        carte.setTailleCases(50);
     	afficher(carte, gui);
 //       
     }
+
+
+
+	public Simulateur getSimulateur() {
+		return simulateur;
+	}
+    
+    
 }
