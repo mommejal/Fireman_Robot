@@ -17,16 +17,29 @@ import simulateur.Simulateur;
 public class GUI implements Simulable {
 	
 	private GUISimulator gui;
+	private Carte carte;
 	private Simulateur simulateur;
 	private long intervalle;
 	private long date_actuelle;
 	
 	
+	
 	public GUI(Carte carte, GUISimulator gui) {
-        this.gui = gui;
-        gui.setSimulable(this);
-        afficher(carte, gui);
+		super();
+		this.gui = gui;
+		this.carte = carte;
+	    gui.setSimulable(this);
+	    afficher(carte, gui);
 	}
+//	public GUI(Carte carte, GUISimulator gui) {
+//        this.gui = gui;
+//        this.carte = carte;
+//        gui.setSimulable(this);
+//        afficher(carte, gui);
+//	}
+	
+	
+	
 	public void afficher(Carte carte, GUISimulator gui) {
 		gui.reset();
 	    for (int i=0; i<carte.getNbLignes(); i++) {
@@ -63,7 +76,9 @@ public class GUI implements Simulable {
 
 	    
 	}
-    @Override
+
+
+	@Override
     public void next() {
         this.date_actuelle += intervalle;
         Queue <Evenement> iterateurEvenement = simulateur.getEvents();
@@ -75,21 +90,8 @@ public class GUI implements Simulable {
 
     @Override
     public void restart() {
-//        planCoordinates();
-//        draw();
+    	gui.reset();
+    	afficher(carte, gui);
+//       
     }
-	public GUISimulator getGui() {
-		return gui;
-	}
-	public Simulateur getSimulateur() {
-		return simulateur;
-	}
-	public long getIntervalle() {
-		return intervalle;
-	}
-	public long getDate_actuelle() {
-		return date_actuelle;
-	}
-    
-    
 }
