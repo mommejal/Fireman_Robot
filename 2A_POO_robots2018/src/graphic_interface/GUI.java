@@ -1,5 +1,6 @@
 package graphic_interface;
 import java.awt.Color;
+import java.util.Queue;
 
 import carte.Carte;
 import gui.GUISimulator;
@@ -7,12 +8,26 @@ import gui.Rectangle;
 import gui.Simulable;
 import gui.Text;
 import robot.Robot;
+import simulateur.Evenement;
+import simulateur.Simulateur;
 
 
 
 
-abstract class GUI implements Simulable {
-	static public void afficher(Carte carte, GUISimulator gui) {
+class GUI implements Simulable {
+	
+	private GUISimulator gui;
+	private Simulateur simulateur;
+	private long intervalle;
+	private long date_actuelle;
+	
+	
+	public GUI(Carte carte, GUISimulator gui) {
+        this.gui = gui;
+        gui.setSimulable(this);
+        afficher(carte, gui);
+	}
+	public void afficher(Carte carte, GUISimulator gui) {
 		gui.reset();
 	    for (int i=0; i<carte.getNbLignes(); i++) {
 	    	for (int j=0; j<carte.getNbColonnes(); j++) {
@@ -48,18 +63,19 @@ abstract class GUI implements Simulable {
 
 	    
 	}
-//    @Override
-//    public void next() {
-//        if (this.xIterator.hasNext())
-//            this.x = this.xIterator.next();		
-//        if (this.yIterator.hasNext())
-//            this.y = this.yIterator.next();		
-//        draw();
-//    }
-//
-//    @Override
-//    public void restart() {
+    @Override
+    public void next() {
+        this.date_actuelle += intervalle;
+        Queue <Evenement> iterateurEvenement = simulateur.getEvents();
+        Evenement event = iterateurEvenement.peek();
+        while (!simulateur.simulationTerminee() && (event.getDate()<date_actuelle)) {
+        	simulateur.execEvenement();
+        } 
+    }
+
+    @Override
+    public void restart() {
 //        planCoordinates();
 //        draw();
-//    }
+    }
 }

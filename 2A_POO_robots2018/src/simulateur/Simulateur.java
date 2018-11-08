@@ -18,11 +18,37 @@ public class Simulateur {
 	}
 	
 	private void incrementeDate() {
-		dateSimulation += currentEvent.getDate();
+		dateSimulation += currentEvent.getDuree();
 	}
 	
-	private boolean simulationTerminee() {
+	public boolean simulationTerminee() {
 		return (events.isEmpty());
 	}
+
+	public long getDateSimulation() {
+		return dateSimulation;
+	}
+
+	public void setDateSimulation(long dateSimulation) {
+		this.dateSimulation = dateSimulation;
+	}
+
+	public Queue<Evenement> getEvents() {
+		return events;
+	}
+
+	public void setEvents(Queue<Evenement> events) {
+		this.events = events;
+	}
+
+	public Evenement getCurrentEvent() {
+		return currentEvent;
+	}
+
+	public void setCurrentEvent(Evenement currentEvent) {
+		this.currentEvent = currentEvent;
+	}
+	
+	
 	
 }

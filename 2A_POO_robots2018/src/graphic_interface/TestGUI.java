@@ -26,6 +26,6 @@ public class TestGUI {
         Carte carte = LecteurDonnees.getCarte();
         carte.setTailleCases(50);
         GUISimulator gui = new GUISimulator(800, 800, Color.BLACK);
-        GUI.afficher(carte, gui);
+        GUI gui_carte = new GUI(carte, gui);
     }
 }
