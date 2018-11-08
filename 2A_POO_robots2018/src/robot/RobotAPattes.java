@@ -14,6 +14,15 @@ public class RobotAPattes extends Robot {
 		// Le Robot à Pattes n'a jamais besoin de se remplir
 		
 	}
+	
+	
+
+	@Override
+	public long dureeRemplirReservoir() {
+		return 0;
+	}
+
+
 
 	@Override
 	public double getVitesse(NatureTerrain nature) {

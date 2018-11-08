@@ -28,6 +28,15 @@ public class Drone extends Robot {
 		}
 
 	}
+	
+	
+
+	@Override
+	public long dureeRemplirReservoir() {
+		return 30*60;
+	}
+
+
 
 	@Override
 	public void remplirReservoir() {

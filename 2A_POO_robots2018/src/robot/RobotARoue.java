@@ -17,11 +17,19 @@ public class RobotARoue extends Robot {
 //			// Dangereux ? trop de calcul ?
 //			sortie = a.getDate()<datefin);
 //		}
-//		this.setVolume(reservoirmax);
+		this.setVolume(reservoirmax);
 	}
 	
 	
 	
+
+	@Override
+	public long dureeRemplirReservoir() {
+		return 600;		
+	}
+
+
+
 
 	@Override
 	public boolean canMove(Direction dir) {

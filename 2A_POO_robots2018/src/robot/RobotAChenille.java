@@ -30,6 +30,13 @@ public class RobotAChenille extends Robot {
 		
 	}
 	}
+	
+	
+
+	@Override
+	public long dureeRemplirReservoir() {
+		return 5*60;
+	}
 
 	@Override
 	public void setVitesse(double vitesse) {

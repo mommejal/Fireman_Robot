@@ -38,6 +38,8 @@ public abstract class Robot {
 	}
 	
 	abstract public void remplirReservoir();
+	
+	abstract public long dureeRemplirReservoir();
 
 	public Case getPosition() {
 		return position;
@@ -46,7 +48,11 @@ public abstract class Robot {
 
 	public abstract double getVitesse(NatureTerrain nature);
 
-
+	
+	public double getVitesse() {
+		return vitesse;
+	}
+	
 	public void setVitesse(double vitesse) {
 		this.vitesse = vitesse;
 	}
@@ -66,6 +72,16 @@ public abstract class Robot {
 		this.position = position;
 	}
 	
+	
+	
+	public double getDebit() {
+		return debit;
+	}
+
+	public void setDebit(double debit) {
+		this.debit = debit;
+	}
+
 	public boolean voisinExiste(Direction dir) {
 		return (position.getVoisins().containsKey(dir));
 	}

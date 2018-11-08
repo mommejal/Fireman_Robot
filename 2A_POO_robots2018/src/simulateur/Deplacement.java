@@ -16,8 +16,7 @@ public class Deplacement extends Evenement {
 
 	@Override
 	public long getDuree() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1+(long)(robot.getPosition().getTailleCases()/robot.getVitesse()); //
 	}
 
 

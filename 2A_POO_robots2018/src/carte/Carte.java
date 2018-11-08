@@ -27,6 +27,7 @@ public class Carte {
 				this.map[i * nbL + j].setColonne(j);
 				this.map[i * nbL + j].setNbLignes(nbL);
 				this.map[i * nbL + j].setNbColonnes(nbC);
+				this.map[i * nbL + j].setTailleCases(tailleCases);
 				this.map[i * nbL + j].setVoisins(new HashMap <Direction,Case>());
 			}
 		}
@@ -78,6 +79,9 @@ public class Carte {
 
 	public void setTailleCases(int tailleCases) {
 		this.tailleCases = tailleCases;
+		for (Case cur : map) {
+			cur.setTailleCases(tailleCases);
+		}
 	}
 
 	public void setNbLignes(int nbLignes) {

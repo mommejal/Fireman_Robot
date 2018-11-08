@@ -8,6 +8,7 @@ public class Case {
 	protected int nbLignes;
 	protected int nbColonnes;
 	private int incendie = 0;
+	private int tailleCases;
 	protected HashMap <Direction,Case> voisins;
 
 	public int getLigne() {
@@ -96,6 +97,16 @@ public class Case {
 
 	public void setVoisins(HashMap<Direction, Case> voisins) {
 		this.voisins = voisins;
+	}
+
+	
+	
+	public int getTailleCases() {
+		return tailleCases;
+	}
+
+	public void setTailleCases(int tailleCases) {
+		this.tailleCases = tailleCases;
 	}
 
 	@Override
