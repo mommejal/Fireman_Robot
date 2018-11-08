@@ -11,6 +11,16 @@ public class Deplacement extends Evenement {
 		super(date,robot);
 		this.dir = dir;
 	}
+	
+	
+
+	@Override
+	public long getDuree() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 
 	@Override
 	public void execute() {
