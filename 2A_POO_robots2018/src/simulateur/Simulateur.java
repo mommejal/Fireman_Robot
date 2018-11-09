@@ -20,13 +20,7 @@ public class Simulateur {
 	}
 	
 	public void execEvenement() {
-<<<<<<< HEAD
-		
-		currentEvent = events.pollLast();
-		System.out.println(currentEvent.toString());
-=======
 		currentEvent = events.pollFirst();
->>>>>>> branch 'master' of https://github.com/mommejal/Fireman_Robot.git
 		incrementeDate();
 		currentEvent.execute();
 	}
