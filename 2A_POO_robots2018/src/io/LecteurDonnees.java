@@ -251,10 +251,12 @@ public class LecteurDonnees {
 			switch (type) {
 			case "DRONE": //TODO
 				robot = new Drone(carte);
+				robot.setVolume(robot.getReservoirmax());
 				carte.getRobots().add(robot);
 				break;
 			case "ROUES":
 				robot = new RobotARoue(carte);
+				robot.setVolume(robot.getReservoirmax());
 				carte.getRobots().add(robot);
 				break;
 			case "PATTES":
@@ -263,6 +265,7 @@ public class LecteurDonnees {
 				break;
 			case "CHENILLES":
 				robot = new RobotAChenille(carte);
+				robot.setVolume(robot.getReservoirmax());
 				carte.getRobots().add(robot);
 				break;
 			default:
@@ -270,10 +273,6 @@ public class LecteurDonnees {
 				break;
 			}
 			robot.setPosition(carte.getMap()[lig*carte.getNbColonnes()+col]);
-			if(robot.getPosition().equals(carte.getMap()[lig*carte.getNbColonnes()+col])) {
-				System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-			}
-
 //			System.out.print("\t type = " + type);
 
 			// lecture eventuelle d'une vitesse du robot (entier)
