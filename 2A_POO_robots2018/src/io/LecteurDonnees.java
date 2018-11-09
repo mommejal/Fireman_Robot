@@ -258,7 +258,6 @@ public class LecteurDonnees {
 				carte.getRobots().add(robot);
 				break;
 			case "PATTES":
-//				TODO
 				robot = new RobotAPattes(carte);
 				carte.getRobots().add(robot);
 				break;

@@ -16,7 +16,7 @@ import simulateur.Simulateur;
 
 
 public class GUI implements Simulable {
-	
+	private Carte carteInitiale;
 	private GUISimulator gui;
 	private Carte carte;
 	public Simulateur simulateur;
@@ -38,6 +38,7 @@ public class GUI implements Simulable {
 //        gui.setSimulable(this);
 //        afficher(carte, gui);
 //	}
+	
 	
 	
 	
@@ -79,6 +80,20 @@ public class GUI implements Simulable {
 	}
 
 
+	public Carte getCarteInitiale() {
+		return carteInitiale;
+	}
+
+
+
+
+	public void setCarteInitiale(Carte carteInitiale) {
+		this.carteInitiale = carteInitiale;
+	}
+
+
+
+
 	@Override
     public void next() {
 		System.out.println(this.simulateur.getEvents().toString());
@@ -97,9 +112,7 @@ public class GUI implements Simulable {
     @Override
     public void restart() {
     	gui.reset();
-        Carte carte = LecteurDonnees.getCarte();
-        carte.setTailleCases(50);
-    	afficher(carte, gui);
+    	afficher(carteInitiale, gui);
 //       
     }
 

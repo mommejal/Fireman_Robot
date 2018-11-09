@@ -9,26 +9,30 @@ public class Simulateur {
 	private Evenement currentEvent;
 	
 	public void ajouteEvenement(Evenement e) {
-//		if (events.peekFirst()!=null) {
-//			Evenement dernier = events.getLast();
-//			e.setDate(dernier.getDate() + e.getDuree());
-//		}
-//		else {
-//			this.setDateSimulation(0);
-//		}
-		events.addFirst(e);
+		if (events.peekFirst()!=null) {
+			Evenement dernier = events.getLast();
+			this.setDateSimulation(dernier.getDate() + e.getDuree());
+		}
+		else {
+			this.setDateSimulation(0);
+		}
+		events.add(e);
 	}
 	
 	public void execEvenement() {
+<<<<<<< HEAD
 		
 		currentEvent = events.pollLast();
 		System.out.println(currentEvent.toString());
+=======
+		currentEvent = events.pollFirst();
+>>>>>>> branch 'master' of https://github.com/mommejal/Fireman_Robot.git
 		incrementeDate();
 		currentEvent.execute();
 	}
 	
 	private void incrementeDate() {
-		this.dateSimulation += currentEvent.getDuree();
+		dateSimulation += currentEvent.getDuree();
 	}
 	
 	public boolean simulationTerminee() {
