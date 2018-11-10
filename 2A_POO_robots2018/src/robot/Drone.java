@@ -1,6 +1,7 @@
 package robot;
 
 import carte.Carte;
+import carte.Case;
 import carte.Direction;
 import carte.NatureTerrain;
 
@@ -66,6 +67,12 @@ public class Drone extends Robot {
 
 	@Override
 	public boolean canMove(Direction dir) {
+		// Le drone peut se deplacer sur tous les terrains
+		return true;
+	}
+	
+	@Override
+	public boolean canMoveFrom(Case depart, Direction dir) {
 		// Le drone peut se deplacer sur tous les terrains
 		return true;
 	}

@@ -57,6 +57,19 @@ public class RobotAPattes extends Robot {
 	}
 
 	@Override
+	public boolean canMoveFrom(Case depart, Direction dir) {
+		// Cette fonction vérifie que le robot puisse aller là  ou il veut à partir d'une case donnée
+		Case dest = depart.getVoisin(dir);
+		NatureTerrain natureDest = dest.getNature();
+		switch (natureDest) {
+		case EAU:
+			return false;
+		default:
+			return true;
+		}
+	}
+
+	@Override
 	public void modifVitesse(Direction dir) {
 		Case dest = position.getVoisin(dir);
 		NatureTerrain natureDest = dest.getNature();

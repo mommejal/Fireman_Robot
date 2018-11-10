@@ -92,7 +92,7 @@ public abstract class Robot {
 	public void setDebit(double debit) {
 		this.debit = debit;
 	}
-
+	
 	public boolean voisinExiste(Direction dir) {
 		return (position.getVoisins().containsKey(dir));
 	}
@@ -100,7 +100,9 @@ public abstract class Robot {
 	public abstract void goRemplir();
 
 	public abstract boolean canMove(Direction dir);
-
+	
+	public abstract boolean canMoveFrom(Case depart, Direction dir);
+	
 	public abstract void modifVitesse(Direction dir);
 
 	public void move(Direction dir) {
@@ -119,7 +121,7 @@ public abstract class Robot {
 
 	public void moveTo(Case dest) {
 		// TODO
-		// Je m'attends à ce que cette méthode ajoute au simuatuer les évenements requis
+		// Je m'attends ï¿½ ce que cette mï¿½thode ajoute au simuatuer les ï¿½venements requis
 		// au simulateur
 	}
 

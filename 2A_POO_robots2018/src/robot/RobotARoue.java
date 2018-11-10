@@ -41,6 +41,21 @@ public class RobotARoue extends Robot {
 			return false;
 		}
 	}
+	
+	@Override
+	public boolean canMoveFrom(Case depart, Direction dir) {
+		// Cette fonction vérifie que le robot puisse aller là  ou il veut à partir d'une case donnée
+		Case dest = depart.getVoisin(dir);
+		NatureTerrain natureDest = dest.getNature();
+		switch (natureDest) {
+		case HABITAT:
+			return true;
+		case TERRAIN_LIBRE:
+			return true;
+		default:
+			return false;
+		}
+	}
 
 	@Override
 	public void goRemplir() {
