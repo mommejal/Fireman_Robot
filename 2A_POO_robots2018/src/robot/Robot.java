@@ -93,12 +93,14 @@ public abstract class Robot {
 	public void setDebit(double debit) {
 		this.debit = debit;
 	}
-
+	
 	public boolean voisinExiste(Direction dir) {
 		return (position.getVoisins().containsKey(dir));
 	}
 	
 	public abstract boolean canMove(Direction dir);
+	
+	public abstract boolean canMoveFrom(Case depart, Direction dir);
 	
 	public abstract void modifVitesse(Direction dir);
 	
