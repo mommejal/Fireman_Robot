@@ -9,11 +9,11 @@ import simulateur.Deplacement;
 public class cheminoptimal {
 
 
-	/*attributs necessaires pour le calcul du plus court chemin*/
+	/** attribut necessaires pour le calcul du plus court chemin **/
 	
 	private Robot robot;
 	
-	/*calcul du plus court chemin*/
+	/** calcul du plus court chemin **/
 	
 	//initialisation des éléments utiles à l'algorithme
 	
@@ -45,7 +45,7 @@ public class cheminoptimal {
 	
 	private Direction directions[] = {Direction.NORD, Direction.SUD, Direction.EST, Direction.OUEST};
 	
-	//algorithme de Dijkstra
+	//calcul des distances et des chemins optimaux avec l'algorithme de Dijkstra
 	
 	private void calcul() {
 		while (!aExplorer.empty()) {
@@ -76,14 +76,14 @@ public class cheminoptimal {
 		}
 	}
 	
-	public long getShortestTime(Robot robot, Case caseVisee) {
+	public long getShortestTime(Case caseVisee) {
 		if (!aExplorer.empty()) {		//teste si l'algorithme de Dijkstra a déjà été appliqué auparavant dans cette situation
 			this.calcul();
 		}
 		return tabRechercheTemps[caseVisee.getLigne()][caseVisee.getColonne()];
 	}
 	
-	public void travelTo(Robot robot, Case caseVisee) {
+	public void travelTo(Case caseVisee) {
 		if (!aExplorer.empty()) {
 			this.calcul();
 		}
