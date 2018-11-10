@@ -14,6 +14,7 @@ import robot.Robot;
 import robot.RobotAChenille;
 import robot.RobotAPattes;
 import robot.RobotARoue;
+import simulateur.Simulateur;
 
 /**
  * Lecteur de cartes au format spectifié dans le sujet. Les données sur les
@@ -218,12 +219,16 @@ public class LecteurDonnees {
 	 */
 	private void lireRobots() throws DataFormatException {
 		ignorerCommentaires();
+		Simulateur simulateur = new Simulateur();
 		try {
 			int nbRobots = scanner.nextInt();
 //			System.out.println("Nb de robots = " + nbRobots);
 			carte.setNbRobots(nbRobots);
 			for (int i = 0; i < nbRobots; i++) {
 				lireRobot(i);
+			}
+			for (Robot rob : carte.getRobots()) {
+				rob.setSimulateur(simulateur);
 			}
 
 		} catch (NoSuchElementException e) {

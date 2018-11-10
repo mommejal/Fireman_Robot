@@ -6,45 +6,46 @@ import carte.Direction;
 import carte.NatureTerrain;
 
 public class RobotAPattes extends Robot {
-	
+
 	double debit = 10;
 	double vitesse = 30;
-	
+	int volume = 1;
+
 	public RobotAPattes(Carte carte) {
 		super(carte);
 		// TODO Auto-generated constructor stub
 	}
 
-
-
 	@Override
 	public void remplirReservoir() {
 		// Le Robot à Pattes n'a jamais besoin de se remplir
-		
+
 	}
-	
-	
 
 	@Override
 	public long dureeRemplirReservoir() {
 		return 0;
 	}
 
+	@Override
+	public void goRemplir() {
+		// TODO Auto-generated method stub
 
+	}
 
 	@Override
 	public double getVitesse(NatureTerrain nature) {
 		if (nature == NatureTerrain.ROCHE) {
 			return 10;
-		}
-		else {
+		} else {
 			return 30;
 		}
 	}
 
 	@Override
 	public boolean canMove(Direction dir) {
-		// Cette fonction vérifie que le robot puisse aller là  ou il veut au niveau de la nature du terrain
+		// Cette fonction vérifie que le robot puisse aller là ou il veut au niveau de
+		// la nature du terrain
 		Case dest = position.getVoisin(dir);
 		NatureTerrain natureDest = dest.getNature();
 		switch (natureDest) {
@@ -60,14 +61,13 @@ public class RobotAPattes extends Robot {
 		Case dest = position.getVoisin(dir);
 		NatureTerrain natureDest = dest.getNature();
 		NatureTerrain naturePos = position.getNature();
-		if ((naturePos == NatureTerrain.ROCHE)&&(natureDest!=NatureTerrain.ROCHE)){
+		if ((naturePos == NatureTerrain.ROCHE) && (natureDest != NatureTerrain.ROCHE)) {
 			this.setVitesse(30);
 		}
-		if ((naturePos != NatureTerrain.ROCHE)&&(natureDest==NatureTerrain.ROCHE)){
+		if ((naturePos != NatureTerrain.ROCHE) && (natureDest == NatureTerrain.ROCHE)) {
 			this.setVitesse(30);
 		}
-		
+
 	}
-	
-	
+
 }
