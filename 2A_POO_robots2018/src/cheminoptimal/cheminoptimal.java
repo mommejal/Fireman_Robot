@@ -3,8 +3,8 @@ import java.util.Stack;
 
 import carte.Case;
 import carte.Direction;
-import carte.NatureTerrain;
 import robot.Robot;
+import simulateur.Deplacement;
 
 public class cheminoptimal {
 
@@ -106,7 +106,7 @@ public class cheminoptimal {
 			}
 		}
 		while (!chemin.empty()) {
-			robot.simulateur.ajouteEvenement(new Deplacement(chemin.pop()), robot);
+			robot.getSimulateur().ajouteEvenement(new Deplacement(chemin.pop(), robot));
 		}
 	}
 		
