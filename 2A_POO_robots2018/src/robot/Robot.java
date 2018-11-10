@@ -13,7 +13,7 @@ public abstract class Robot {
 	protected Case position;
 	protected double vitesse=0;
 	protected int reservoirmax;
-	protected int volume = reservoirmax;
+	protected int volume;
 	protected double debit;
 	
 	
@@ -107,18 +107,13 @@ public abstract class Robot {
 	 * @param dir est la direction vers laquelle veut se deplacer le robot
 	 */
 	public void move(Direction dir) {
-//		System.out.println("case avant :"+position);
-		System.out.println(this.canMove(dir));
-		System.out.println(voisinExiste(dir));
 		if (this.canMove(dir) && voisinExiste(dir)) {
-			System.out.println("là");
 			this.modifVitesse(dir);
 			this.setPosition(position.getVoisin(dir));
 		}
 		else {
 			throw new IllegalArgumentException("La case doit exister et etre accessible au robot");
 		}
-//		System.out.println("case apres :"+position+dir);
 	}
 
 	@Override
@@ -133,6 +128,11 @@ public abstract class Robot {
 	public void setCarte(Carte carte) {
 		this.carte = carte;
 	}
+
+	public int getReservoirmax() {
+		return reservoirmax;
+	}
+	
 	
 	
 }

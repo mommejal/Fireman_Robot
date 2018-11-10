@@ -21,6 +21,7 @@ public class Simulateur {
 	
 	public void execEvenement() {
 		currentEvent = events.pollFirst();
+//		System.out.println(currentEvent.toString());
 		incrementeDate();
 		currentEvent.execute();
 	}

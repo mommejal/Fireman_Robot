@@ -10,12 +10,15 @@ import gui.GUISimulator;
 import io.LecteurDonnees;
 import simulateur.Deplacement;
 import simulateur.Intervention;
+import simulateur.Remplissage;
 import simulateur.Simulateur;
 
 public class TestExtinction {
 
 	public static void main(String[] args) {
-        // crée la fenêtre graphique dans laquelle dessiner
+        /**
+         * Ce test est le deuxieme scénario proposée dans la partie 2, le robot va bouger éteindre, bouger, se remplir et finir d'éteindre l'incendie
+         */
     	if (args.length < 1) {
             System.out.println("Syntaxe: java TestLecteurDonnees <nomDeFichier>");
             System.exit(1);
@@ -32,20 +35,18 @@ public class TestExtinction {
         carte.setTailleCases(50);
         GUISimulator gui = new GUISimulator(800, 800, Color.BLACK);
         GUI gui_carte = new GUI(carte, gui);
-//        Simulateur simulateur = gui_carte.getSimulateur();
-        Simulateur simulateur = new Simulateur();
-        
+        Simulateur simulateur = new Simulateur();     
         // Ajout d'évenements
         simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
         simulateur.ajouteEvenement(new Intervention(carte.getRobots().get(1)));
         simulateur.ajouteEvenement(new Deplacement(Direction.OUEST,carte.getRobots().get(1)));
         simulateur.ajouteEvenement(new Deplacement(Direction.OUEST,carte.getRobots().get(1)));
-
- 
-        simulateur.getEvents().getLast().toString();
+        simulateur.ajouteEvenement(new Remplissage(carte.getRobots().get(1)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.EST,carte.getRobots().get(1)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.EST,carte.getRobots().get(1)));
+        simulateur.ajouteEvenement(new Intervention(carte.getRobots().get(1)));
         gui_carte.setSimulateur(simulateur);
         gui_carte.getSimulateur().getEvents().toString();
-//        System.out.println(new Deplacement(Direction.NORD,carte.getRobots().get(0)).toString());
         
         
         

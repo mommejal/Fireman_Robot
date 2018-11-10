@@ -9,6 +9,7 @@ public class RobotARoue extends Robot {
 	int reservoirmax = 5000;
 	double debit = 100/5;
 	double vitesse = 80;
+	int volume = 5000;
 
 	
 	
@@ -22,12 +23,6 @@ public class RobotARoue extends Robot {
 
 	@Override
 	public void remplirReservoir() {
-//		long datefin = a.getDate()+30*60; //Temps pour se remplir
-//		boolean sortie = false;
-//		while (!sortie) {
-//			// Dangereux ? trop de calcul ?
-//			sortie = a.getDate()<datefin);
-//		}
 		this.setVolume(reservoirmax);
 	}
 	

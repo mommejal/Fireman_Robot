@@ -79,6 +79,13 @@ public class Drone extends Robot {
 		// Ne fait rien, la vitesse du drone ne dépend pas du terrain
 		
 	}
+
+
+
+	public int getReservoirmax() {
+		return reservoirmax;
+	}
+	
 	
 	
 	
