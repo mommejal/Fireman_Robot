@@ -13,7 +13,8 @@ public class Intervention extends Evenement {
 	@Override
 	public long getDuree() {
 		// Renvoie la durée de l'intervention
-		return (long)(Math.min(robot.getPosition().getIncendie()/robot.getDebit(), robot.getVolume()/robot.getDebit()));
+		return (long) Math.ceil(
+				Math.min(robot.getPosition().getIncendie() / robot.getDebit(), robot.getVolume() / robot.getDebit()));
 	}
 
 	@Override

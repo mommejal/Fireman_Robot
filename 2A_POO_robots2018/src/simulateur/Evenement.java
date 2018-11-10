@@ -18,6 +18,10 @@ public abstract class Evenement {
 
 	
 	
+	public Robot getRobot() {
+		return robot;
+	}
+
 	abstract public long getDuree();
 
 	abstract public void execute();

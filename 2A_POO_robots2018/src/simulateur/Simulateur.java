@@ -20,9 +20,13 @@ public class Simulateur {
 	}
 	
 	public void execEvenement() {
+		/**
+		 * Cette méthode va prendre le prochain évenement à faire, maj le moment ou le robot sera libre et lance l'execution de l'évenement
+		 */
 		currentEvent = events.pollFirst();
 //		System.out.println(currentEvent.toString());
 		incrementeDate();
+		currentEvent.getRobot().setDateWhereFree(currentEvent.getDuree());
 		currentEvent.execute();
 	}
 	

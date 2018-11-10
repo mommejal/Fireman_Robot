@@ -30,14 +30,21 @@ public class RobotAChenille extends Robot {
 	public void remplirReservoir() {
 	    for(Case voisin : position.getVoisins().values()){
 	    	if (voisin.getNature() == NatureTerrain.EAU) {
-	    		//TODO G�rer le temps
 	    		volume = reservoirmax;
+				this.incrementeDateWhereFree(dureeRemplirReservoir());
 	      }
+	    
 		
 	}
 	}
 	
 	
+
+	@Override
+	public void goRemplir() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public long dureeRemplirReservoir() {
