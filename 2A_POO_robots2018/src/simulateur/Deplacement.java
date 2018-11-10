@@ -16,7 +16,9 @@ public class Deplacement extends Evenement {
 
 	@Override
 	public long getDuree() {
-		return 1+(long)(robot.getPosition().getTailleCases()/robot.getVitesse()); //
+//		System.out.println("Taille case =" + robot.getCarte().getTailleReelleCases());
+//		System.out.println("vitesse = " +robot.getVitesse(robot.getPosition().getNature()));
+		return (long)(robot.getCarte().getTailleReelleCases()*3600/robot.getVitesse(robot.getPosition().getNature()));
 	}
 
 

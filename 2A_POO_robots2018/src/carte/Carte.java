@@ -8,6 +8,8 @@ import robot.Robot;
 
 public class Carte {
 	private int tailleCases;
+	// en km
+	private int tailleReelleCases = 1; 
 	private int nbLignes;
 	private int nbColonnes;
 	private int nbIncendies = 0;
@@ -120,10 +122,17 @@ public class Carte {
 		this.robots = robots;
 	}
 
+	
+	public int getTailleReelleCases() {
+		return tailleReelleCases;
+	}
+
 	@Override
 	public String toString() {
 		return "Carte [map=" + Arrays.toString(map) + "]\n\n" + "nbrobots" + nbRobots + "\n liste robots: \n"
 				+ robots.toString();
 	}
+
+	
 
 }
