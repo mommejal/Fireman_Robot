@@ -61,6 +61,12 @@ public class Simulateur {
 	public void setCurrentEvent(Evenement currentEvent) {
 		this.currentEvent = currentEvent;
 	}
+
+	@Override
+	public String toString() {
+		return "Simulateur [dateSimulation=" + dateSimulation + ", events=" + events + ", currentEvent=" + currentEvent
+				+ "]";
+	}
 	
 	
 	
