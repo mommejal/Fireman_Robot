@@ -4,7 +4,8 @@ import carte.Carte;
 import carte.Case;
 import carte.Direction;
 import carte.NatureTerrain;
-import simulateur.Simulateur;
+//import simulateur.Simulateur;
+import simulateur.SimulateurBis;
 
 public abstract class Robot {
 	/**
@@ -19,7 +20,7 @@ public abstract class Robot {
 	protected int volume;
 	protected double debit;
 	protected long dateWhereFree = 0;
-	protected Simulateur simulateur;
+	protected SimulateurBis simulateur;
 	protected int numeroRobot = 0;
 
 	public Robot(Carte carte) {
@@ -122,10 +123,13 @@ public abstract class Robot {
 		 * 
 		 * @param dir est la direction vers laquelle veut se deplacer le robot
 		 */
-		if (this.canMove(dir) && voisinExiste(dir)) {
+		if (voisinExiste(dir) && this.canMove(dir)) {
 			this.modifVitesse(dir);
 			this.setPosition(position.getVoisin(dir));
 		} else {
+			System.out.println(this);
+			System.out.println(dir);
+			System.out.println(voisinExiste(dir) +","+ this.canMove(dir));
 			throw new IllegalArgumentException("La case doit exister et etre accessible au robot");
 		}
 	}
@@ -167,11 +171,11 @@ public abstract class Robot {
 		this.dateWhereFree = dateWhereFree;
 	}
 
-	public Simulateur getSimulateur() {
+	public SimulateurBis getSimulateur() {
 		return simulateur;
 	}
 
-	public void setSimulateur(Simulateur simulateur) {
+	public void setSimulateur(SimulateurBis simulateur) {
 		this.simulateur = simulateur;
 	}
 

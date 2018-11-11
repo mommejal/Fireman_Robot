@@ -6,12 +6,12 @@ import java.util.zip.DataFormatException;
 
 import carte.Carte;
 import carte.Direction;
-import cheminoptimal.CheminOptimal;
+import cheminoptimal.cheminoptimal;
 import graphicinterface.GUI;
 import gui.GUISimulator;
 import io.LecteurDonnees;
 import simulateur.Deplacement;
-import simulateur.Simulateur;
+import simulateur.SimulateurBis;
 
 public class TestMouvementDjikstra {
 
@@ -34,17 +34,24 @@ public class TestMouvementDjikstra {
         Carte carte = LecteurDonnees.getCarte();
         carte.setTailleCases(50);
         GUISimulator gui = new GUISimulator(800, 800, Color.BLACK);
-        GUI gui_carte = new GUI(carte, gui);
-        Simulateur simulateur = new Simulateur();
-        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
+        GUI gui_carte = new GUI(carte, gui, args[0]);
+        SimulateurBis simulateur = carte.getRobots().get(0).getSimulateur();
         gui_carte.setSimulateur(simulateur);
         gui_carte.setSimulateur(simulateur);
         carte.getRobots().get(0).toString();
-        carte.getRobots().get(0).getSimulateur().ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
+//        carte.getRobots().get(0).getSimulateur().ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
         System.out.println("ON VA AFFICHER LE ROBOT 0");
-        carte.getRobots().get(0).getSimulateur().toString();
-        carte.getRobots().get(0).getPosition().toString();
-//        new CheminOptimal(carte.getRobots().get(0)).travelTo(carte.getCase(6, 6));
+//        carte.getRobots().get(0).getSimulateur().toString();
+//        carte.getRobots().get(0).getPosition().toString();
+        System.out.println(carte.getRobots());
+        cheminoptimal co0 = new cheminoptimal(carte.getRobots().get(0));
+        cheminoptimal co1 = new cheminoptimal(carte.getRobots().get(1));
+        cheminoptimal co2 = new cheminoptimal(carte.getRobots().get(2));
+        co0.travelTo(carte.getCase(6, 6));
+        co1.travelTo(carte.getCase(5, 5));
+        co2.travelTo(carte.getCase(4, 4));
+//        System.out.println(simulateur.getEvents());
+//        System.out.println(co.getShortestTime(carte.getCase(6, 6)));
 //        new CheminOptimal(carte.getRobots().get(1)).travelTo(carte.getCase(2, 3));
 //        new CheminOptimal(carte.getRobots().get(2)).travelTo(carte.getCase(1, 1));
         System.out.println("Le robot devrait etre en 6,6");

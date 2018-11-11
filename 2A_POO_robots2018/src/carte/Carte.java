@@ -24,13 +24,13 @@ public class Carte implements Cloneable{
 		this.robots = new ArrayList<Robot>();
 		for (int i = 0; i < nbL; i++) {
 			for (int j = 0; j < nbC; j++) {
-				this.map[i * nbL + j] = new Case();
-				this.map[i * nbL + j].setLigne(i);
-				this.map[i * nbL + j].setColonne(j);
-				this.map[i * nbL + j].setNbLignes(nbL);
-				this.map[i * nbL + j].setNbColonnes(nbC);
-				this.map[i * nbL + j].setTailleCases(tailleCases);
-				this.map[i * nbL + j].setVoisins(new HashMap<Direction, Case>());
+				this.map[i * nbC + j] = new Case();
+				this.map[i * nbC + j].setLigne(i);
+				this.map[i * nbC + j].setColonne(j);
+				this.map[i * nbC + j].setNbLignes(nbL);
+				this.map[i * nbC + j].setNbColonnes(nbC);
+				this.map[i * nbC + j].setTailleCases(tailleCases);
+				this.map[i * nbC + j].setVoisins(new HashMap<Direction, Case>());
 			}
 		}
 		for (Case cur : map) {
