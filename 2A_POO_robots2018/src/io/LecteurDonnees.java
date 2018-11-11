@@ -14,6 +14,7 @@ import robot.Robot;
 import robot.RobotAChenille;
 import robot.RobotAPattes;
 import robot.RobotARoue;
+import simulateur.Simulateur;
 
 /**
  * Lecteur de cartes au format spectifié dans le sujet. Les données sur les
@@ -53,7 +54,7 @@ public class LecteurDonnees {
 		lecteur.lireRobots();
 		scanner.close();
 		System.out.println("\n == Lecture terminee");
-		System.out.println(carte.toString());
+//		System.out.println(carte.toString());
 		for (Robot rob : carte.getRobots()) {
 			rob.setCarte(carte);
 		}
@@ -85,7 +86,7 @@ public class LecteurDonnees {
 			int nbLignes = scanner.nextInt();
 			int nbColonnes = scanner.nextInt();
 			int tailleCases = scanner.nextInt(); // en m
-			System.out.println("Carte " + nbLignes + "x" + nbColonnes + "; taille des cases = " + tailleCases);
+//			System.out.println("Carte " + nbLignes + "x" + nbColonnes + "; taille des cases = " + tailleCases);
 
 			for (int lig = 0; lig < nbLignes; lig++) {
 				for (int col = 0; col < nbColonnes; col++) {
@@ -125,7 +126,7 @@ public class LecteurDonnees {
 	 */
 	private void lireCase(int lig, int col) throws DataFormatException {
 		ignorerCommentaires();
-		System.out.print("Case (" + lig + "," + col + "): ");
+//		System.out.print("Case (" + lig + "," + col + "): ");
 		String chaineNature = new String();
 		// NatureTerrain nature;
 
@@ -137,13 +138,13 @@ public class LecteurDonnees {
 
 			verifieLigneTerminee();
 
-			System.out.print("nature = " + chaineNature);
+//			System.out.print("nature = " + chaineNature);
 
 		} catch (NoSuchElementException e) {
 			throw new DataFormatException("format de case invalide. " + "Attendu: nature altitude [valeur_specifique]");
 		}
 
-		System.out.println();
+//		System.out.println();
 	}
 
 	private void storeCase(int lig, int col, Carte carte) throws DataFormatException {
@@ -166,7 +167,7 @@ public class LecteurDonnees {
 			throw new DataFormatException("format de case invalide. " + "Attendu: nature altitude [valeur_specifique]");
 		}
 
-		System.out.println();
+//		System.out.println();
 	}
 
 	/**
@@ -218,12 +219,16 @@ public class LecteurDonnees {
 	 */
 	private void lireRobots() throws DataFormatException {
 		ignorerCommentaires();
+		Simulateur simulateur = new Simulateur();
 		try {
 			int nbRobots = scanner.nextInt();
 //			System.out.println("Nb de robots = " + nbRobots);
 			carte.setNbRobots(nbRobots);
 			for (int i = 0; i < nbRobots; i++) {
 				lireRobot(i);
+			}
+			for (Robot rob : carte.getRobots()) {
+				rob.setSimulateur(simulateur);
 			}
 
 		} catch (NoSuchElementException e) {
@@ -272,6 +277,7 @@ public class LecteurDonnees {
 				robot=null;
 				break;
 			}
+			robot.setNumeroRobot(i);
 			robot.setPosition(carte.getMap()[lig*carte.getNbColonnes()+col]);
 //			System.out.print("\t type = " + type);
 

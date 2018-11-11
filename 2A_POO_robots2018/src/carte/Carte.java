@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import robot.Robot;
 
-public class Carte {
+public class Carte implements Cloneable{
 	private int tailleCases;
 	// en km
 	private int tailleReelleCases = 1; 
@@ -30,7 +30,7 @@ public class Carte {
 				this.map[i * nbL + j].setNbLignes(nbL);
 				this.map[i * nbL + j].setNbColonnes(nbC);
 				this.map[i * nbL + j].setTailleCases(tailleCases);
-				this.map[i * nbL + j].setVoisins(new HashMap <Direction,Case>());
+				this.map[i * nbL + j].setVoisins(new HashMap<Direction, Case>());
 			}
 		}
 		for (Case cur : map) {
@@ -39,19 +39,19 @@ public class Carte {
 			for (Direction dir : Direction.values()) {
 				if (cur.voisinExiste(dir)) {
 					if (dir == Direction.NORD) {
-						cur.getVoisins().put(dir,this.getCase(i-1, j));
+						cur.getVoisins().put(dir, this.getCase(i - 1, j));
 					}
 
 					else if (dir == Direction.SUD) {
-						cur.getVoisins().put(dir,this.getCase(i+1, j));
+						cur.getVoisins().put(dir, this.getCase(i + 1, j));
 					}
 
 					else if (dir == Direction.EST) {
-						cur.getVoisins().put(dir,this.getCase(i, j+1));
+						cur.getVoisins().put(dir, this.getCase(i, j + 1));
 					}
 
 					else {
-						cur.getVoisins().put(dir,this.getCase(i, j-1));
+						cur.getVoisins().put(dir, this.getCase(i, j - 1));
 					}
 
 				}
@@ -125,6 +125,21 @@ public class Carte {
 	
 	public int getTailleReelleCases() {
 		return tailleReelleCases;
+	}
+	
+	public Object clone() {
+		Object o = null;
+		try {
+			// On récupère l'instance à renvoyer par l'appel de la 
+			// méthode super.clone()
+			o = super.clone();
+		} catch(CloneNotSupportedException cnse) {
+			// Ne devrait jamais arriver car nous implémentons 
+			// l'interface Cloneable
+			cnse.printStackTrace(System.err);
+		}
+		// on renvoie le clone
+		return o;
 	}
 
 	@Override

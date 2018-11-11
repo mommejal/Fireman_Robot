@@ -18,6 +18,14 @@ public abstract class Evenement {
 
 	
 	
+	public void setRobot(Robot robot) {
+		this.robot = robot;
+	}
+
+	public Robot getRobot() {
+		return robot;
+	}
+
 	abstract public long getDuree();
 
 	abstract public void execute();

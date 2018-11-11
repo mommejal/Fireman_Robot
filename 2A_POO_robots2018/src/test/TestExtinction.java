@@ -11,7 +11,7 @@ import io.LecteurDonnees;
 import simulateur.Deplacement;
 import simulateur.Intervention;
 import simulateur.Remplissage;
-import simulateur.Simulateur;
+import simulateur.SimulateurBis;
 
 public class TestExtinction {
 
@@ -33,9 +33,10 @@ public class TestExtinction {
         }
         Carte carte = LecteurDonnees.getCarte();
         carte.setTailleCases(50);
+//        System.out.println(carte.getCase(5, 5));
         GUISimulator gui = new GUISimulator(800, 800, Color.BLACK);
-        GUI gui_carte = new GUI(carte, gui);
-        Simulateur simulateur = new Simulateur();     
+        GUI gui_carte = new GUI(carte, gui, args[0]);
+        SimulateurBis simulateur = new SimulateurBis();     
         // Ajout d'évenements
         simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(1)));
         simulateur.ajouteEvenement(new Intervention(carte.getRobots().get(1)));
@@ -45,8 +46,12 @@ public class TestExtinction {
         simulateur.ajouteEvenement(new Deplacement(Direction.EST,carte.getRobots().get(1)));
         simulateur.ajouteEvenement(new Deplacement(Direction.EST,carte.getRobots().get(1)));
         simulateur.ajouteEvenement(new Intervention(carte.getRobots().get(1)));
+        simulateur.ajouteEvenement(new Deplacement(Direction.NORD,carte.getRobots().get(0)));
+//        System.out.println(simulateur.getEvents());
         gui_carte.setSimulateur(simulateur);
-        gui_carte.getSimulateur().getEvents().toString();
+        System.out.println("date = "+simulateur.getDateSimulation());
+//        gui_carte.getSimulateur().getEvents().toString();
+//        System.out.println(gui_carte.getSimulateur().getEvents());
         
         
         

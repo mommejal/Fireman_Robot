@@ -3,7 +3,7 @@ package simulateur;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class Simulateur {
+public class Simulateur implements Cloneable{
 	private long dateSimulation; //Date courante de simulation
 	Deque <Evenement> events=new ArrayDeque<Evenement>(); // Liste des evenements
 	private Evenement currentEvent;
@@ -20,9 +20,13 @@ public class Simulateur {
 	}
 	
 	public void execEvenement() {
+		/**
+		 * Cette méthode va prendre le prochain évenement à faire, maj le moment ou le robot sera libre et lance l'execution de l'évenement
+		 */
 		currentEvent = events.pollFirst();
 //		System.out.println(currentEvent.toString());
 		incrementeDate();
+		currentEvent.getRobot().setDateWhereFree(currentEvent.getDuree());
 		currentEvent.execute();
 	}
 	
@@ -56,6 +60,21 @@ public class Simulateur {
 
 	public void setCurrentEvent(Evenement currentEvent) {
 		this.currentEvent = currentEvent;
+	}
+	
+	public Object clone() {
+		Object o = null;
+		try {
+			// On récupère l'instance à renvoyer par l'appel de la 
+			// méthode super.clone()
+			o = super.clone();
+		} catch(CloneNotSupportedException cnse) {
+			// Ne devrait jamais arriver car nous implémentons 
+			// l'interface Cloneable
+			cnse.printStackTrace(System.err);
+		}
+		// on renvoie le clone
+		return o;
 	}
 	
 	

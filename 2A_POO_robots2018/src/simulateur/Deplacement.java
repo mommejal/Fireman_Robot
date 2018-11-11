@@ -25,6 +25,7 @@ public class Deplacement extends Evenement {
 
 	@Override
 	public void execute() {
+		System.out.println(robot);
 		robot.move(dir);
 	}
 
@@ -32,7 +33,7 @@ public class Deplacement extends Evenement {
 
 	@Override
 	public String toString() {
-		return "Deplacement [dir=" + dir + "]\n";
+		return robot+"Deplacement [dir=" + dir + "]\n";
 	}
 	
 	
