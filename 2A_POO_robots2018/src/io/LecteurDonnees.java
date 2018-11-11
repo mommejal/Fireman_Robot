@@ -54,7 +54,7 @@ public class LecteurDonnees {
 		lecteur.lireRobots();
 		scanner.close();
 		System.out.println("\n == Lecture terminee");
-		System.out.println(carte.toString());
+//		System.out.println(carte.toString());
 		for (Robot rob : carte.getRobots()) {
 			rob.setCarte(carte);
 		}
@@ -86,7 +86,7 @@ public class LecteurDonnees {
 			int nbLignes = scanner.nextInt();
 			int nbColonnes = scanner.nextInt();
 			int tailleCases = scanner.nextInt(); // en m
-			System.out.println("Carte " + nbLignes + "x" + nbColonnes + "; taille des cases = " + tailleCases);
+//			System.out.println("Carte " + nbLignes + "x" + nbColonnes + "; taille des cases = " + tailleCases);
 
 			for (int lig = 0; lig < nbLignes; lig++) {
 				for (int col = 0; col < nbColonnes; col++) {
@@ -126,7 +126,7 @@ public class LecteurDonnees {
 	 */
 	private void lireCase(int lig, int col) throws DataFormatException {
 		ignorerCommentaires();
-		System.out.print("Case (" + lig + "," + col + "): ");
+//		System.out.print("Case (" + lig + "," + col + "): ");
 		String chaineNature = new String();
 		// NatureTerrain nature;
 
@@ -138,13 +138,13 @@ public class LecteurDonnees {
 
 			verifieLigneTerminee();
 
-			System.out.print("nature = " + chaineNature);
+//			System.out.print("nature = " + chaineNature);
 
 		} catch (NoSuchElementException e) {
 			throw new DataFormatException("format de case invalide. " + "Attendu: nature altitude [valeur_specifique]");
 		}
 
-		System.out.println();
+//		System.out.println();
 	}
 
 	private void storeCase(int lig, int col, Carte carte) throws DataFormatException {
@@ -167,7 +167,7 @@ public class LecteurDonnees {
 			throw new DataFormatException("format de case invalide. " + "Attendu: nature altitude [valeur_specifique]");
 		}
 
-		System.out.println();
+//		System.out.println();
 	}
 
 	/**
@@ -277,6 +277,7 @@ public class LecteurDonnees {
 				robot=null;
 				break;
 			}
+			robot.setNumeroRobot(i);
 			robot.setPosition(carte.getMap()[lig*carte.getNbColonnes()+col]);
 //			System.out.print("\t type = " + type);
 

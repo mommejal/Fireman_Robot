@@ -20,6 +20,7 @@ public abstract class Robot {
 	protected double debit;
 	protected long dateWhereFree = 0;
 	protected Simulateur simulateur;
+	protected int numeroRobot = 0;
 
 	public Robot(Carte carte) {
 		super();
@@ -92,7 +93,17 @@ public abstract class Robot {
 	public void setDebit(double debit) {
 		this.debit = debit;
 	}
+
 	
+	public int getNumeroRobot() {
+		return numeroRobot;
+	}
+
+	public void setNumeroRobot(int numeroRobot) {
+		this.numeroRobot = numeroRobot;
+	}
+
+
 	public boolean voisinExiste(Direction dir) {
 		return (position.getVoisins().containsKey(dir));
 	}
@@ -124,6 +135,12 @@ public abstract class Robot {
 //		// Je m'attends ï¿½ ce que cette mï¿½thode ajoute au simuatuer les ï¿½venements requis
 //		// au simulateur
 //	}
+
+	public void moveTo(Case dest) {
+		// TODO
+		// Je m'attends à ce que cette méthode ajoute au simuatuer les évenements requis
+		// au simulateur
+	}
 
 	@Override
 	public String toString() {
