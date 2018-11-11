@@ -123,10 +123,6 @@ public abstract class Robot {
 			this.modifVitesse(dir);
 			this.setPosition(position.getVoisin(dir));
 		} else {
-//			System.out.println(position);
-//			System.out.println(this);
-//			System.out.println("CanMove ="+this.canMove(dir));
-//			System.out.println("VoisinExiste="+voisinExiste(dir));
 			throw new IllegalArgumentException("La case doit exister et etre accessible au robot");
 		}
 	}
