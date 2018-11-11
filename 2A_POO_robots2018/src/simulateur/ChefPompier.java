@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import carte.Carte;
 import carte.Case;
+import cheminoptimal.cheminoptimal;
 import robot.Robot;
 
 public class ChefPompier {
@@ -14,15 +15,18 @@ public class ChefPompier {
 	 */
 
 	private Carte carte;
-	private Simulateur simulateur;
-	private ArrayList<Case> incendies;
+	private SimulateurBis simulateur;
+	private ArrayList<Case> incendies = new ArrayList<Case>();
 	private int nbOrdres = 0;
+	
 
 	public void assignRobot() {
 		for (Robot rob : carte.getRobots()) {
 			if (rob.isFree(simulateur.getDateSimulation()) && (rob.getVolume() > 0)) {
-				rob.moveTo(incendies.get((int) Math.random() * carte.getNbIncendies()));// L'incendie est pris au  hasard
+				cheminoptimal co = new cheminoptimal(rob);
+				co.travelTo(incendies.get((int) Math.random() * carte.getNbIncendies()));// L'incendie est pris au  hasard
 				simulateur.ajouteEvenement(new Intervention(rob));
+				System.out.println(rob.getSimulateur().getEvents())
 																							
 			} else if (rob.isFree(simulateur.getDateSimulation()) && (rob.getVolume() == 0)) {
 				rob.goRemplir();
@@ -48,7 +52,7 @@ public class ChefPompier {
 		/**
 		 * Dirige les robots selon la stratégie élémentaire tous les pas secondes
 		 */
-		if (simulateur.getDateSimulation()>pas*nbOrdres) {
+		if (simulateur.getDateSimulation()>=pas*nbOrdres) {
 			updateIncendies();
 			assignRobot();
 			nbOrdres++;
@@ -63,11 +67,11 @@ public class ChefPompier {
 		this.carte = carte;
 	}
 
-	public Simulateur getSimulateur() {
+	public SimulateurBis getSimulateur() {
 		return simulateur;
 	}
 
-	public void setSimulateur(Simulateur simulateur) {
+	public void setSimulateur(SimulateurBis simulateur) {
 		this.simulateur = simulateur;
 	}
 

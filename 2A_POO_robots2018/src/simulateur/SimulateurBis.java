@@ -43,7 +43,7 @@ public class SimulateurBis {
 	public boolean simulationTerminee() {
 //		System.out.println("rang = "+rangEvent);
 //		System.out.println("taille = "+events.size());
-		return (rangEvent == events.size());
+		return ((rangEvent == events.size())&&events.size()>0);
 	}
 
 	public long getDateSimulation() {
