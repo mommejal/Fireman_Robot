@@ -118,12 +118,12 @@ public abstract class Robot {
 			throw new IllegalArgumentException("La case doit exister et etre accessible au robot");
 		}
 	}
-
-	public void moveTo(Case dest) {
-		// TODO
-		// Je m'attends � ce que cette m�thode ajoute au simuatuer les �venements requis
-		// au simulateur
-	}
+//
+//	public void moveTo(Case dest) {
+//		// TODO
+//		// Je m'attends � ce que cette m�thode ajoute au simuatuer les �venements requis
+//		// au simulateur
+//	}
 
 	@Override
 	public String toString() {

@@ -84,7 +84,7 @@ public class cheminoptimal {
 	}
 	
 	public void travelTo(Case caseVisee) {
-		if (!aExplorer.empty()) {
+		if (!aExplorer.empty()) { 		//teste si l'algorithme de Dijkstra a déjà été appliqué auparavant dans cette situation
 			this.calcul();
 		}
 		Case current = caseVisee;
